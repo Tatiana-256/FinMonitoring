@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+front/fin-monitoring-front/node_modules/
 back/node_modules/nodemon/
 /.pnp
 .pnp.js
