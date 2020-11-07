@@ -1,0 +1,44 @@
+.nav_menu a {
+    text-decoration: none;
+    margin-right: 8%;
+    position: relative;
+    color: #7984EE;
+    height: 2.8rem;
+    width: 8.2rem;
+    letter-spacing: 0.1rem;
+    outline: none;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.nav_menu a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #7984EE;
+    bottom: 0%;
+    /*transform:  translate(0%, 50%)*/
+
+}
+
+.nav_menu a:hover {
+    outline: none;
+    border: none;
+    transition: all 0.8s ease-out;
+    border-radius: 10px;
+    color: white;
+    background-color: #7984EE;
+    border: none;
+
+}
+
+.nav_menu {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
