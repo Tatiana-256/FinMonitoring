@@ -23,3 +23,8 @@ back/node_modules/nodemon/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#.net backend/
+back.net/FinMonitoring/WebApi/bin/
+back.net/FinMonitoring/WebApi/obj/
+back.net/FinMonitoring/.vs/
