@@ -1,5 +1,5 @@
 
- .general {
+ .general, .red {
      height: 2.8rem;
      width: 8.2rem;
      font-size: 1rem;
@@ -8,6 +8,7 @@
      font-family: Corporate S, sans-serif;
      font-weight: normal;
      border-radius: 53px;
+     border: none;
 
 
 }
@@ -15,8 +16,11 @@
 .general {
     color: white;
     background-color: #7984EE;
-    border: none;
+}
 
+.red{
+    color: white;
+    background-color: #ee505e;
 }
 
 /*.gray {*/

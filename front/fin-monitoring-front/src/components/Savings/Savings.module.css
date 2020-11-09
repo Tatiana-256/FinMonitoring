@@ -1,4 +1,19 @@
 .add_item {
+    padding: 3%;
+    width: 100%;
+}
+.add_fund{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+
+}
+
+.plus {
+    background-color: #7984EE;
+    text-align: center;
+    color: white;
+    height: 50px;
+    width: 50px;
+    font-size: 2rem;
+    border-radius: 50%;
 }
