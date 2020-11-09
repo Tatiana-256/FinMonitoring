@@ -2,7 +2,7 @@ import axios from "axios";
 import {Simulate} from "react-dom/test-utils";
 
 
-const dev = 'https://localhost:44361'
+const dev = 'https://localhost:5005'
 
 const instance = axios.create({
     baseURL: dev,
@@ -18,14 +18,15 @@ const instance = axios.create({
 
 export const fundsAPI = {
     getFunds() {
-        return instance.get<IFund>(`api/Funds`
-        )
+        return instance.get<IFund>(`api/Funds`)
             .then(res => {
-                    return res.data
                     console.log(res.data)
+                    return res.data
                 }
             )
-            .catch(res => console.log(res))
+            .catch(res => {
+                console.log(res);
+            })
     },
 }
 

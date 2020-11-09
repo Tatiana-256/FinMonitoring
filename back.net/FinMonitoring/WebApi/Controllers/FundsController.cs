@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Models;
 using WebApi.Services;
+using Microsoft.AspNetCore.Cors;
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class FundsController : ControllerBase
     {
         private readonly FundService _fundService;
@@ -42,28 +44,23 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<Fund> Create(Fund fund)
         {
-            fund = new Fund()
-            {
-                Amount = 10,
-                FundName = "Sem",
-                Goal = 100
-            };
-
             _fundService.Create(fund);
 
             return CreatedAtRoute("GetFund", new { id = fund.Id.ToString() }, fund);
         }
 
-        //// PUT: api/Funds/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        // PUT: api/Funds/5
+        [HttpPut("{id}")]
+        public void Put(string id, [FromBody] Fund value)
+        {
+            _fundService.Update(id, value);
+        }
 
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(string id)
+        {
+            _fundService.Remove(id);
+        }
     }
 }

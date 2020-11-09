@@ -36,6 +36,10 @@ namespace WebApi
                 sp.GetRequiredService<IOptions<FinMonitoringDatabaseSettings>>().Value);
 
             services.AddSingleton<FundService>();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
 
             services.AddControllers();
         }
@@ -53,6 +57,9 @@ namespace WebApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(options => options.AllowAnyOrigin());
+
 
             app.UseEndpoints(endpoints =>
             {
