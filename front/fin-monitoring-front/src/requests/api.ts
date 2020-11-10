@@ -18,19 +18,16 @@ const instance = axios.create({
 
 export const fundsAPI = {
     getFunds() {
-        return instance.get<IFund>(`api/Funds`)
+        return instance.get<Array<IFund>>(`api/Funds`)
             .then(res => {
                     console.log(res.data)
                     return res.data
                 }
             )
-            .catch(res => {
-                console.log(res);
-            })
     },
 }
 
-interface IFund {
+export interface IFund {
     id: string,
     fundName: string,
     amount: number,

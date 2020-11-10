@@ -1,1 +1,6 @@
-.fund
+.fund {
+    display: flex;
+    padding: 20px;
+    width: 50%;
+    justify-content: space-evenly;
+}
