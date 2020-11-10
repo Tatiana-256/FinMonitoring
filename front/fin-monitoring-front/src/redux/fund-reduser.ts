@@ -9,22 +9,27 @@ const initialState = {
 
 export const fundReducer = (state = initialState, action: fundActionsType): initialStateType => {
     switch (action.type) {
-
+        case "fundReducer/ADD_FUND":
+            return {
+                ...state,
+                funds: [action.newFund, ...state.funds]
+            }
     }
     return state;
 
 }
 
-interface IFund {
-    name: string,
+export interface IFund {
     id: string,
+    name: string,
+    amount: number,
     currency: string,
-    goal: string,
+    goal: number,
     history: Array<IFundHistory>
 }
 
-interface IFundHistory {
+export interface IFundHistory {
+    id: string
     amount: number,
     date: string,
-    id: string
 }

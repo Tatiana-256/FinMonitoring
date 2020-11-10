@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './Fund.module.css'
-import {IFund} from "../../requests/api";
+import {IFundLocal} from "../../requests/api";
+import {IFund} from '../../redux/fund-reduser';
 
 interface IProps {
-    fund: IFund
-
+    fund: IFundLocal
 }
 
 export const Fund: React.FC<IProps> = ({fund}) => {
@@ -14,3 +14,18 @@ export const Fund: React.FC<IProps> = ({fund}) => {
         <div>{fund.goal}</div>
     </div>
 }
+
+
+interface IPropsStore {
+    fund: IFund
+}
+
+export const FundStore: React.FC<IPropsStore> = ({fund}) => {
+    return <div className={styles.fund}>
+        <div>{fund.name}</div>
+        <div>{fund.currency}</div>
+        <div>{fund.goal}</div>
+        <div>{fund.id}</div>
+    </div>
+}
+

@@ -1,6 +1,7 @@
 import {createStore, Action, combineReducers, applyMiddleware} from "redux";
 import {ThunkAction} from "redux-thunk";
 import thunkMiddleware from "redux-thunk"
+import {fundReducer} from "./fund-reduser";
 // import {loginReducer} from "./login-reduser";
 // import {registerReducer} from "./register-reduser";
 // import {forgotReducer} from "./forgot-reduser";
@@ -12,14 +13,7 @@ import thunkMiddleware from "redux-thunk"
 
 
 let reducers = combineReducers({
-    // login: loginReducer,
-    // register: registerReducer,
-    // forgot: forgotReducer,
-    // newPass: newPasswordReducer,
-    // cardsPack: cardsPackReducer,
-    // cards: cardsReducer,
-    // learn: learnReducer,
-    // files: filesReducer
+    funds: fundReducer
 })
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));

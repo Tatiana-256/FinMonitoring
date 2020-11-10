@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.Models;
 using WebApi.Services;
 using Microsoft.AspNetCore.Cors;
+using Newtonsoft.Json.Schema;
 
 namespace WebApi.Controllers
 {
@@ -24,7 +25,33 @@ namespace WebApi.Controllers
 
         // GET: api/Funds
         [HttpGet]
-        public ActionResult<List<Fund>> Get() => _fundService.Get();
+        public ActionResult<List<Fund>> Get()
+        {
+
+            var newFund = new Fund
+            {
+
+                Amount = 200,
+                Currency = "USD",
+                FundName = "dron",
+                Goal = 1000,
+
+                History = new List<FundHistory> {
+                    new FundHistory {
+                    Date = DateTime.Now.ToString(),
+                    Amount = 100
+                },
+                 new FundHistory {
+                    Date = DateTime.Now.ToString(),
+                    Amount = 100 }
+
+                }
+            };
+
+            _fundService.Create(newFund);
+
+            return _fundService.Get();
+        }
 
         // GET: api/Funds/5
         [HttpGet("{id:length(24)}", Name = "GetFund")]

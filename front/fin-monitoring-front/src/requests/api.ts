@@ -18,7 +18,7 @@ const instance = axios.create({
 
 export const fundsAPI = {
     getFunds() {
-        return instance.get<Array<IFund>>(`api/Funds`)
+        return instance.get<Array<IFundLocal>>(`api/Funds`)
             .then(res => {
                     console.log(res.data)
                     return res.data
@@ -27,7 +27,7 @@ export const fundsAPI = {
     },
 }
 
-export interface IFund {
+export interface IFundLocal {
     id: string,
     fundName: string,
     amount: number,
