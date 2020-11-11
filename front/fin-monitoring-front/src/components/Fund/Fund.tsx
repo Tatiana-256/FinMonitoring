@@ -1,30 +1,25 @@
 import React from 'react'
 import styles from './Fund.module.css'
 import {IFund} from '../../redux/fund-reduser';
-
-interface IProps {
-    fund: IFund
-}
-
-export const Fund: React.FC<IProps> = ({fund}) => {
-    return <div className={styles.fund}>
-        <div>{fund.amount}</div>
-        <div>{fund.fundName}</div>
-        <div>{fund.goal}</div>
-    </div>
-}
+import {Button} from "../../common-components/customButton/button";
 
 
 interface IPropsStore {
-    fund: IFund
+    fund: IFund,
+    deleteFund: (id: string) => void
 }
 
-export const FundStore: React.FC<IPropsStore> = ({fund}) => {
+export const FundStore: React.FC<IPropsStore> = ({fund, deleteFund}) => {
     return <div className={styles.fund}>
         <div>{fund.fundName}</div>
         <div>{fund.currency}</div>
         <div>{fund.goal}</div>
         <div>{fund.id}</div>
+        <Button buttonClass={'red'} onClick={
+            () => {
+                deleteFund(fund.id)
+            }
+        }>Delete</Button>
     </div>
 }
 

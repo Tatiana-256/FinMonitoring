@@ -20,6 +20,11 @@ export const fundReducer = (state = initialState, action: fundActionsType): init
                 ...state,
                 funds: [action.newFund, ...state.funds]
             }
+        case "fundReducer/delete_FUND":
+            return {
+                ...state,
+                funds: state.funds.filter(fund => fund.id !== action.id)
+            }
     }
     return state;
 

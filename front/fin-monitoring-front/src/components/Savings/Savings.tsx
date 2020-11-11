@@ -3,10 +3,10 @@ import styles from './Savings.module.css'
 import {Button} from "../../common-components/customButton/button";
 import {fundsAPI, IFundLocal} from "../../requests/api";
 import {AddItem} from '../Add-Item/Add-item';
-import {Fund, FundStore} from "../Fund/Fund";
+import {FundStore} from "../Fund/Fund";
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateType} from '../../redux/store';
-import {actions, addFund} from "../../redux/fund-actions";
+import {actions, addFund, deleteFund} from "../../redux/fund-actions";
 import {IFund, IFundAPI, IFundHistory} from "../../redux/fund-reduser";
 
 export const Savings = () => {
@@ -15,14 +15,12 @@ export const Savings = () => {
     const dispatch = useDispatch();
 
     const [newFund, setAddFund] = useState(false)
-    const [fundsLocal, setFunds] = useState<Array<IFund>>([])
     const showAddingFundForm = () => setAddFund(prevState => !prevState)
 
     useEffect(() => {
         const funds = fundsAPI.getFunds()
             .then(data => {
                 console.log(data)
-                setFunds(data)
                 dispatch(actions.getFunds(data))
             })
 
@@ -34,7 +32,6 @@ export const Savings = () => {
 
 
     const addNewFund = (name: string, currency: string, goal: number) => {
-        debugger
         const fund: IFundAPI = {
             fundName: name,
             currency: currency,
@@ -45,6 +42,10 @@ export const Savings = () => {
         dispatch(addFund(fund))
     };
 
+    const deleteFundHandler = (id: string) => {
+        dispatch(deleteFund(id))
+    }
+
     return <div className={styles.add_item}>
         {newFund ?
             <AddItem showAddingFundForm={showAddingFundForm} addNewFund={addNewFund}/>
@@ -54,8 +55,7 @@ export const Savings = () => {
                 <div className={styles.plus} onClick={showAddingFundForm}>+</div>
             </div>
         }
-        {/*{fundsLocal.map(fund => <Fund fund={fund}/>)}*/}
-        {funds.funds.map(fund => <FundStore fund={fund}/>)}
+        {funds.funds.map(fund => <FundStore fund={fund} deleteFund={deleteFundHandler}/>)}
 
     </div>
 }

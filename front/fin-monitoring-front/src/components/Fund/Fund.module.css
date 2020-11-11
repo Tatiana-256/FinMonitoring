@@ -1,6 +1,6 @@
 .fund {
     display: flex;
     padding: 20px;
-    width: 50%;
+    width: 80vw;
     justify-content: space-evenly;
 }

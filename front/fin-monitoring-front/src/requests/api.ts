@@ -32,6 +32,13 @@ export const fundsAPI = {
             console.log(res.data)
             return res.data
         })
+    },
+    deleteFund(id: string) {
+        return instance.delete(`api/Funds/${id}`
+        ).then(res => {
+            console.log(res)
+            return res
+        })
     }
 }
 
