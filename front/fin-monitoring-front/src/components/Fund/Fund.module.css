@@ -2,5 +2,57 @@
     display: flex;
     padding: 20px;
     width: 80vw;
-    justify-content: space-evenly;
+    border-top: 1px solid #7984EE;
+    /*justify-content: space-evenly;*/
 }
+
+.options {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete_button{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.fund div:not(:last-child) {
+    border-right: 1px solid #7984EE;
+
+}
+
+.fund_header {
+    border-bottom: 1px solid #7984EE;
+}
+
+/*.fundName, .amount, .currency, .goal {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    border-right: 1px solid #61dafb;*/
+/*}*/
+
+
+/*.fundName {*/
+/*    width: 20%;*/
+/*}*/
+
+/*.amount {*/
+/*    width: 20%;*/
+
+/*}*/
+
+/*.currency {*/
+/*    width: 20%;*/
+
+/*}*/
+
+/*.goal {*/
+/*    width: 20%;*/
+
+/*}*/

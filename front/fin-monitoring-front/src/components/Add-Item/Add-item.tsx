@@ -42,14 +42,14 @@ export const AddItem: React.FC<IProps> = ({showAddingFundForm, addNewFund}) => {
         <input placeholder={'Fund name'} type='text' onChange={onChangeFundName}/>
         <input placeholder={'Target amount'} type='number' onChange={onChangeTargetAmount}/>
         <div>
-            <div>choose your currency</div>
+            {/*<div>choose your currency</div>*/}
             <select name="currency" placeholder={'currency'} onChange={onChangeCurrency}>
                 <option>USD</option>
                 <option>EUR</option>
                 <option>UA</option>
             </select>
         </div>
-        <input placeholder={'description'}/>
+        {/*<input placeholder={'description'}/>*/}
         <div className={styles.buttons}>
             <Button buttonClass={'general'} onClick={onSubmitForm}>Add</Button>
             <Button buttonClass={'red'} onClick={onCancelForm}>Cancel</Button>

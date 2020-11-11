@@ -9,17 +9,33 @@ interface IPropsStore {
     deleteFund: (id: string) => void
 }
 
-export const FundStore: React.FC<IPropsStore> = ({fund, deleteFund}) => {
+export const Fund: React.FC<IPropsStore> = ({fund, deleteFund}) => {
     return <div className={styles.fund}>
-        <div>{fund.fundName}</div>
-        <div>{fund.currency}</div>
-        <div>{fund.goal}</div>
-        <div>{fund.id}</div>
-        <Button buttonClass={'red'} onClick={
-            () => {
-                deleteFund(fund.id)
-            }
-        }>Delete</Button>
+        <div className={styles.options}>{fund.fundName}</div>
+        <div className={styles.options}>{fund.amount}</div>
+        <div className={styles.options}>{fund.currency}</div>
+        <div className={styles.options}>{fund.goal}</div>
+        <div className={styles.options}>{Math.round((fund.amount / fund.goal) * 100)}%</div>
+        <div
+            className={styles.delete_button}
+        >
+            <Button buttonClass={'red'} onClick={() => deleteFund!(fund.id)}
+            >Delete
+            </Button>
+        </div>
+    </div>
+}
+
+// `${styles.description} ${styles.yellow}`
+
+export const FundHeader = () => {
+    return <div className={`${styles.fund} ${styles.fund_header}`}>
+        <div className={styles.options}>Fund name</div>
+        <div className={styles.options}>Saved amount</div>
+        <div className={styles.options}>Currency</div>
+        <div className={styles.options}>Goal</div>
+        <div className={styles.options}>%</div>
+        <div className={styles.options}/>
     </div>
 }
 

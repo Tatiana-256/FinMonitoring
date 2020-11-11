@@ -2,10 +2,11 @@
     padding: 3%;
     width: 100%;
 }
-.add_fund{
+
+.add_fund {
     display: flex;
     align-items: center;
-
+    height: 10vh;
 }
 
 .plus {

@@ -3,7 +3,7 @@ import styles from './Savings.module.css'
 import {Button} from "../../common-components/customButton/button";
 import {fundsAPI, IFundLocal} from "../../requests/api";
 import {AddItem} from '../Add-Item/Add-item';
-import {FundStore} from "../Fund/Fund";
+import {Fund, FundHeader} from "../Fund/Fund";
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateType} from '../../redux/store';
 import {actions, addFund, deleteFund} from "../../redux/fund-actions";
@@ -36,7 +36,7 @@ export const Savings = () => {
             fundName: name,
             currency: currency,
             goal: goal,
-            amount: 100,
+            amount: 0,
             history: [] as Array<IFundHistory>
         };
         dispatch(addFund(fund))
@@ -51,11 +51,14 @@ export const Savings = () => {
             <AddItem showAddingFundForm={showAddingFundForm} addNewFund={addNewFund}/>
             :
             <div className={styles.add_fund}>
+                <div style={{paddingLeft:'5vw'}}>
+                    <div className={styles.plus} onClick={showAddingFundForm}>+</div>
+                </div>
                 <div style={{padding: '0 30px'}}>Add new fund</div>
-                <div className={styles.plus} onClick={showAddingFundForm}>+</div>
             </div>
         }
-        {funds.funds.map(fund => <FundStore fund={fund} deleteFund={deleteFundHandler}/>)}
+        <FundHeader/>
+        {funds.funds.map(fund => <Fund fund={fund} deleteFund={deleteFundHandler}/>)}
 
     </div>
 }
