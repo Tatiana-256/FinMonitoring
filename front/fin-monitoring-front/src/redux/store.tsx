@@ -2,14 +2,6 @@ import {createStore, Action, combineReducers, applyMiddleware} from "redux";
 import {ThunkAction} from "redux-thunk";
 import thunkMiddleware from "redux-thunk"
 import {fundReducer} from "./fund-reduser";
-// import {loginReducer} from "./login-reduser";
-// import {registerReducer} from "./register-reduser";
-// import {forgotReducer} from "./forgot-reduser";
-// import {newPasswordReducer} from "./newPassword-reduser";
-// import {cardsPackReducer} from "./cardsRedusers/cardsPack-reduser";
-// import {cardsReducer} from "./cardsRedusers/cards-reduser";
-// import {learnReducer} from "./cardsRedusers/learnCard-reduser";
-// import {filesReducer} from "../../work-with-files/BLL/files-reducer";
 
 
 let reducers = combineReducers({

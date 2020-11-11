@@ -11,7 +11,7 @@ using Newtonsoft.Json.Schema;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] 
     [ApiController]
     [EnableCors("AllowOrigin")]
     public class FundsController : ControllerBase
@@ -28,27 +28,27 @@ namespace WebApi.Controllers
         public ActionResult<List<Fund>> Get()
         {
 
-            var newFund = new Fund
-            {
+            //var newFund = new Fund
+            //{
 
-                Amount = 200,
-                Currency = "USD",
-                FundName = "dron",
-                Goal = 1000,
+            //    Amount = 200,
+            //    Currency = "USD",
+            //    FundName = "dron",
+            //    Goal = 1000,
 
-                History = new List<FundHistory> {
-                    new FundHistory {
-                    Date = DateTime.Now.ToString(),
-                    Amount = 100
-                },
-                 new FundHistory {
-                    Date = DateTime.Now.ToString(),
-                    Amount = 100 }
+            //    History = new List<FundHistory> {
+            //        new FundHistory {
+            //        Date = DateTime.Now.ToString(),
+            //        Amount = 100
+            //    },
+            //     new FundHistory {
+            //        Date = DateTime.Now.ToString(),
+            //        Amount = 100 }
 
-                }
-            };
+            //    }
+            //};
 
-            _fundService.Create(newFund);
+            //_fundService.Create(newFund);
 
             return _fundService.Get();
         }
@@ -71,6 +71,28 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<Fund> Create(Fund fund)
         {
+
+            //var newFund = new Fund
+            //{
+
+            //    Amount = fund ,
+            //    Currency = "USD",
+            //    FundName = "dron",
+            //    Goal = 1000,
+
+            //    History = new List<FundHistory> { }  };
+                //{
+                    //new FundHistory {
+                    //Date = DateTime.Now.ToString(),
+                    //Amount = 100
+                //},
+                 //new FundHistory {
+                   // Date = DateTime.Now.ToString(),
+                    //Amount = 100 }
+
+                //}
+            //};
+
             _fundService.Create(fund);
 
             return CreatedAtRoute("GetFund", new { id = fund.Id.ToString() }, fund);

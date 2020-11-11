@@ -6,17 +6,16 @@ import {AddItem} from '../Add-Item/Add-item';
 import {Fund, FundStore} from "../Fund/Fund";
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateType} from '../../redux/store';
-import {actions} from "../../redux/fund-actions";
-import {IFund, IFundHistory} from "../../redux/fund-reduser";
+import {actions, addFund} from "../../redux/fund-actions";
+import {IFund, IFundAPI, IFundHistory} from "../../redux/fund-reduser";
 
 export const Savings = () => {
 
 
     const dispatch = useDispatch();
-    const {funds} = useSelector((store: AppStateType) => store)
 
     const [newFund, setAddFund] = useState(false)
-    const [fundsLocal, setFunds] = useState<Array<IFundLocal>>([])
+    const [fundsLocal, setFunds] = useState<Array<IFund>>([])
     const showAddingFundForm = () => setAddFund(prevState => !prevState)
 
     useEffect(() => {
@@ -24,26 +23,27 @@ export const Savings = () => {
             .then(data => {
                 console.log(data)
                 setFunds(data)
+                dispatch(actions.getFunds(data))
             })
 
         console.log(funds)
 
     }, [])
 
+    const {funds} = useSelector((store: AppStateType) => store)
 
-    const addNewFund = (name:string, currency: string, goal: number) => {
-        const fund: IFund = {
-            name: name,
-            id: Date.now().toString(),
+
+    const addNewFund = (name: string, currency: string, goal: number) => {
+        debugger
+        const fund: IFundAPI = {
+            fundName: name,
             currency: currency,
             goal: goal,
             amount: 100,
             history: [] as Array<IFundHistory>
-        }
-        dispatch(actions.addFund(fund))
-
-
-    }
+        };
+        dispatch(addFund(fund))
+    };
 
     return <div className={styles.add_item}>
         {newFund ?
@@ -54,7 +54,7 @@ export const Savings = () => {
                 <div className={styles.plus} onClick={showAddingFundForm}>+</div>
             </div>
         }
-        {fundsLocal.map(fund => <Fund fund={fund}/>)}
+        {/*{fundsLocal.map(fund => <Fund fund={fund}/>)}*/}
         {funds.funds.map(fund => <FundStore fund={fund}/>)}
 
     </div>
