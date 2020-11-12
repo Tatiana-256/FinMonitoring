@@ -1,57 +1,77 @@
-import React, {useState} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import styles from './Fund.module.css'
 import {IFund} from '../../redux/fund-reduser';
 import {Button} from "../../common-components/customButton/button";
-import {AddingSum} from "../addingSum/addingSum";
+import {AddingSum, SaveCancelButtons} from "../addingSum/addingSum";
 
 
 interface IPropsStore {
     fund: IFund,
-    deleteFund: (id: string) => void
+    deleteFund: (id: string) => void,
+    onChangeFundName: (e: ChangeEvent<HTMLInputElement>) => void,
+    onChangeGoal: (e: ChangeEvent<HTMLInputElement>) => void,
+    onChangeCurrency: (e: ChangeEvent<HTMLSelectElement>) => void
+
 }
 
-export const Fund: React.FC<IPropsStore> = ({fund, deleteFund}) => {
+export const Fund: React.FC<IPropsStore> = ({fund, deleteFund, onChangeFundName, onChangeCurrency, onChangeGoal}) => {
 
     const [addingSum, setAddingSum] = useState(false)
+    const [edit, setEdit] = useState(false)
 
     const setForm = () => setAddingSum(prevState => !prevState)
+    const setEditForm = () => setEdit(prevState => !prevState)
 
     return <>
         {addingSum && <AddingSum setForm={setForm}/>}
         <div className={styles.fund}>
-            <div className={styles.options}>{fund.fundName}</div>
+            {/*_____________________ FUND NAME ______________________*/}
+            {edit ? <input defaultValue={fund.fundName} onChange={onChangeFundName} className={styles.options}/> :
+                <div className={styles.options}>{fund.fundName}</div>}
+
+            {/*_____________________ AMOUNT NAME ______________________*/}
             <div className={`${styles.options} ${styles.amount}`}>
-                <div>
+                <div style={{padding: "0 15%"}}>
                     {fund.amount}
                 </div>
                 <div className={styles.add_amount} onClick={setForm}>+</div>
             </div>
-            <div className={styles.options}>{fund.currency}</div>
-            <div className={styles.options}>{fund.goal}</div>
+
+            {/*_____________________ FUND CURRENCY ______________________*/}
+            {edit ? <div className={styles.options}>
+                    <select name="currency" placeholder={'currency'}
+                            defaultValue={fund.currency}
+                            onChange={onChangeCurrency}>
+                        <option>USD</option>
+                        <option>EUR</option>
+                        <option>UA</option>
+                    </select>
+                </div>
+                :
+                <div className={styles.options}>{fund.currency}</div>}
+
+            {/*_____________________ FUND GOAL ______________________*/}
+            {edit ? <input defaultValue={fund.goal} onChange={onChangeGoal} className={styles.options}/> :
+                <div className={styles.options}>{fund.goal}</div>}
+
             <div
                 className={styles.options}>{fund.goal === 0 ? "Put goal amount" : `${Math.round((fund.amount / fund.goal) * 100)}%`}
             </div>
-            <div
-                className={styles.delete_button}
-            >
-                <Button buttonClass={'red'} onClick={() => deleteFund!(fund.id)}
-                >Delete
-                </Button>
+
+            {/*_____________________ EDIT BUTTONS ______________________*/}
+            <div className={styles.delete_button}>
+                {edit ? <SaveCancelButtons setForm={setEditForm}/> :
+                    <>
+                        <Button buttonClass={'red'} onClick={() => deleteFund!(fund.id)}>
+                            Delete
+                        </Button>
+                        <Button buttonClass={'general'} onClick={setEditForm} style={{marginLeft: "1%"}}>
+                            Edit
+                        </Button>
+                    </>}
             </div>
         </div>
     </>
 }
 
-// `${styles.description} ${styles.yellow}`
-
-export const FundHeader = () => {
-    return <div className={`${styles.fund} ${styles.fund_header}`}>
-        <div className={styles.options}>Fund name</div>
-        <div className={styles.options}>Saved amount</div>
-        <div className={styles.options}>Currency</div>
-        <div className={styles.options}>Goal</div>
-        <div className={styles.options}>%</div>
-        <div className={styles.options}/>
-    </div>
-}
 

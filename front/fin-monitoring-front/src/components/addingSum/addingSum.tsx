@@ -17,10 +17,19 @@ export const AddingSum: React.FC<IProps> = ({setForm}) => {
                 <div>sum</div>
                 <div>date</div>
             </div>
-            <div className={styles.sum_buttons}>
-                <Button buttonClass={'general'} onClick={setForm}>Save</Button>
-                <Button buttonClass={'red'} onClick={setForm}>Cancel</Button>
-            </div>
+            <SaveCancelButtons setForm={setForm}/>
         </div>
+    </div>
+}
+
+
+interface ISaveCancelProps {
+    setForm: () => void
+}
+
+export const SaveCancelButtons: React.FC<ISaveCancelProps> = ({setForm}) => {
+    return <div className={styles.sum_buttons}>
+        <Button buttonClass={'general'} onClick={setForm}>Save</Button>
+        <Button buttonClass={'red'} onClick={setForm}>Cancel</Button>
     </div>
 }
