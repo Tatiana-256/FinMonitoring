@@ -13,6 +13,11 @@
     justify-content: center;
 }
 
+.amount{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .delete_button{
     width: 20%;
     display: flex;
@@ -21,38 +26,23 @@
 }
 
 
-.fund div:not(:last-child) {
-    border-right: 1px solid #7984EE;
+/*.fund div:not(:last-child) {*/
+/*    border-right: 1px solid #7984EE;*/
 
-}
+/*}*/
 
 .fund_header {
     border-bottom: 1px solid #7984EE;
 }
 
-/*.fundName, .amount, .currency, .goal {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    border-right: 1px solid #61dafb;*/
-/*}*/
+.add_amount{
+    height: 28px;
+    width: 28px;
+    background-color: #7984EE;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-
-/*.fundName {*/
-/*    width: 20%;*/
-/*}*/
-
-/*.amount {*/
-/*    width: 20%;*/
-
-/*}*/
-
-/*.currency {*/
-/*    width: 20%;*/
-
-/*}*/
-
-/*.goal {*/
-/*    width: 20%;*/
-
-/*}*/
+}
