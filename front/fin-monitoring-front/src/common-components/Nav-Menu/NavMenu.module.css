@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
+
 }
 
 .nav_menu a:after {
@@ -41,4 +42,5 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    width: 80vw;
 }

@@ -1,0 +1,50 @@
+.add_sum_container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 16px;
+    overflow: auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    z-index: 1000;
+    transition: visibility .15s ease, opacity .15s ease;
+    background-color: rgba(169, 210, 255, 0.37);
+}
+
+.add_sum {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: white;
+    padding: 3%;
+    /*transform: scale(0);*/
+    /*opacity: 1;*/
+    transition: opacity .15s ease, transform .15s ease;
+    border-radius: 12px;
+}
+
+.history_info {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 8% 1%;
+}
+
+.sum_buttons{
+    width: 104%;
+    display: flex;
+    justify-content: space-between;
+}
