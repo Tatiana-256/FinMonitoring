@@ -6,9 +6,9 @@ import {fundsAPI} from "../requests/api";
 export type fundActionsType = InferActionsTypes<typeof actions>
 
 export const actions = {
-    // addTaskAC: (newTask: taskType) => ({type: ADD_TASK, newTask: newTask} as const)
     getFunds: (funds: Array<IFund>) => ({type: "fundReducer/GET_FUND", funds} as const),
     addFund: (newFund: IFund) => ({type: "fundReducer/ADD_FUND", newFund} as const),
+    editFund: (id: string, newFund: IFund) => ({type: "fundReducer/EDIT_FUND", id, newFund} as const),
     deleteFund: (id: string) => ({type: "fundReducer/delete_FUND", id} as const)
 }
 
@@ -24,7 +24,6 @@ export const addFund = (fund: IFundAPI): thunkType => async (dispatch) => {
     }
 };
 
-
 export const deleteFund = (id: string): thunkType => async (dispatch) => {
     let result = await fundsAPI.deleteFund(id)
     if (result) {
@@ -32,3 +31,11 @@ export const deleteFund = (id: string): thunkType => async (dispatch) => {
     }
 }
 
+
+export const editFundAC = (id: string, fund: IFund): thunkType => async (dispatch) => {
+    let result = await fundsAPI.editFund(id, fund)
+    debugger
+    if (result === '') {
+        dispatch(actions.editFund(id, fund))
+    }
+}

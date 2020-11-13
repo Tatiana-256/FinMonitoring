@@ -6,7 +6,7 @@ import {AddItem} from '../Add-Item/Add-item';
 import {Fund} from "../Fund/Fund";
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateType} from '../../redux/store';
-import {actions, addFund, deleteFund} from "../../redux/fund-actions";
+import {actions, addFund, deleteFund, editFundAC} from "../../redux/fund-actions";
 import {IFund, IFundAPI, IFundHistory} from "../../redux/fund-reduser";
 import {FundHeader} from "../FundHeader/FundHeader";
 
@@ -78,6 +78,19 @@ export const Savings = () => {
         setFundCurrency('')
     }
 
+
+    const editFund = (id: string, amount: number, fundNameStore: string, targetAmountStore: number) => {
+        debugger
+        const newFund = {
+            id: id,
+            fundName: fundName ? fundName : fundNameStore,
+            amount: amount,
+            currency: fundCurrency,
+            goal: targetAmount ? targetAmount : targetAmountStore,
+            history: []
+        }
+        dispatch(editFundAC(id, newFund))
+    }
     /*_____________________ DELETE FUND ______________________*/
 
     const deleteFundHandler = (id: string) => {
@@ -106,7 +119,9 @@ export const Savings = () => {
                                        onChangeFundName={onChangeFundName}
                                        deleteFund={deleteFundHandler}
                                        onChangeCurrency={onChangeCurrency}
-                                       onChangeGoal={onChangeTargetAmount}/>)}
+                                       onChangeGoal={onChangeTargetAmount}
+                                       editFund={editFund}
+        />)}
 
     </div>
 }

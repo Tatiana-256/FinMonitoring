@@ -8,8 +8,6 @@ const dev = 'https://localhost:5005'
 const instance = axios.create({
     baseURL: dev,
     headers: {
-        // 'Access-Control-Allow-Origin': '*',
-        // 'Access-Control-Request-Method': '*',
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         'Access-Control-Allow-Headers': '*',
         'Access-Control-Allow-Origin': '*'
@@ -33,6 +31,12 @@ export const fundsAPI = {
             return res.data
         })
     },
+    editFund(id: string, fund: IFundAPI) {
+        return instance.put(`api/Funds/${id}`, fund).then(res => {
+            console.log(res.data)
+            return res.data
+        })
+    },
     deleteFund(id: string) {
         return instance.delete(`api/Funds/${id}`
         ).then(res => {
@@ -41,6 +45,7 @@ export const fundsAPI = {
         })
     }
 }
+
 
 export interface IFundLocal {
     Id: string,

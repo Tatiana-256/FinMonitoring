@@ -8,19 +8,26 @@ import {AddingSum, SaveCancelButtons} from "../addingSum/addingSum";
 interface IPropsStore {
     fund: IFund,
     deleteFund: (id: string) => void,
+    editFund: (id: string, amount: number, fundNameStore: string, targetAmountStore: number) => void,
     onChangeFundName: (e: ChangeEvent<HTMLInputElement>) => void,
     onChangeGoal: (e: ChangeEvent<HTMLInputElement>) => void,
     onChangeCurrency: (e: ChangeEvent<HTMLSelectElement>) => void
 
 }
 
-export const Fund: React.FC<IPropsStore> = ({fund, deleteFund, onChangeFundName, onChangeCurrency, onChangeGoal}) => {
+export const Fund: React.FC<IPropsStore> = ({fund, deleteFund, onChangeFundName, onChangeCurrency, onChangeGoal, editFund}) => {
 
     const [addingSum, setAddingSum] = useState(false)
     const [edit, setEdit] = useState(false)
 
     const setForm = () => setAddingSum(prevState => !prevState)
     const setEditForm = () => setEdit(prevState => !prevState)
+
+
+    const onSetForm = () => {
+        editFund(fund.id, fund.amount, fund.fundName, fund.goal)
+        setEditForm()
+    }
 
     return <>
         {addingSum && <AddingSum setForm={setForm}/>}
@@ -60,13 +67,13 @@ export const Fund: React.FC<IPropsStore> = ({fund, deleteFund, onChangeFundName,
 
             {/*_____________________ EDIT BUTTONS ______________________*/}
             <div className={styles.delete_button}>
-                {edit ? <SaveCancelButtons setForm={setEditForm}/> :
+                {edit ? <SaveCancelButtons setForm={setEditForm} onSetFormOk={onSetForm}/> :
                     <>
-                        <Button buttonClass={'red'} onClick={() => deleteFund!(fund.id)}>
-                            Delete
-                        </Button>
                         <Button buttonClass={'general'} onClick={setEditForm} style={{marginLeft: "1%"}}>
                             Edit
+                        </Button>
+                        <Button buttonClass={'red'} onClick={() => deleteFund!(fund.id)}>
+                            Delete
                         </Button>
                     </>}
             </div>

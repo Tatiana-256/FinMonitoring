@@ -20,6 +20,18 @@ export const fundReducer = (state = initialState, action: fundActionsType): init
                 ...state,
                 funds: [action.newFund, ...state.funds]
             }
+        case "fundReducer/EDIT_FUND":
+            return {
+                ...state,
+                funds: state.funds.map(fund => {
+                    if (fund.id !== action.id) {
+debugger
+                        return fund
+                    } else {
+                        return {...fund, ...action.newFund}
+                    }
+                })
+            }
         case "fundReducer/delete_FUND":
             return {
                 ...state,
@@ -29,6 +41,23 @@ export const fundReducer = (state = initialState, action: fundActionsType): init
     return state;
 
 }
+
+//
+// case CHANGE_LIST_TITLE:
+//     return {
+//         ...state, toDoLists: state.toDoLists.map((title: any) => {
+//                 if (title.id !== action.toDoListId) {
+//                     return title
+//                 } else {
+//                     return {...title, ...action.obj}
+//                 }
+//             }
+//         )
+//     }
+
+// changeListTitle: (toDoListId: string, obj: any) => ({
+//     type: CHANGE_LIST_TITLE, obj: obj, toDoListId: toDoListId
+// } as const),
 
 
 export interface IFund {
