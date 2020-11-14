@@ -11,16 +11,25 @@ import store from "./redux/store";
 
 function App() {
     return (
+        <>
+            <Route exact path="/expenses" component={AddItem}/>
+            <Route exact path="/" component={Savings}/>
+        </>
+    );
+}
+
+function AppGlobal() {
+    return (
         <HashRouter>
             <Provider store={store}>
                 <NavMenu/>
                 <div className="App">
-                    <Route exact path="/expenses" component={AddItem}/>
-                    <Route exact path="/" component={Savings}/>
+                    <App/>
                 </div>
             </Provider>
         </HashRouter>
     );
 }
 
-export default App;
+
+export default AppGlobal;
