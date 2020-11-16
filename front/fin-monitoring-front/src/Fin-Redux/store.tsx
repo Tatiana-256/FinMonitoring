@@ -1,11 +1,13 @@
 import {createStore, Action, combineReducers, applyMiddleware} from "redux";
 import {ThunkAction} from "redux-thunk";
 import thunkMiddleware from "redux-thunk"
-import {fundReducer} from "./fund-reduser";
+import {ingredientsReducer} from "./Ingredients/Ingredients-reduser";
+import {categoryReducer} from "./Category/category-reduser";
 
 
 let reducers = combineReducers({
-    funds: fundReducer
+    ingredients: ingredientsReducer,
+    category: categoryReducer
 })
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
