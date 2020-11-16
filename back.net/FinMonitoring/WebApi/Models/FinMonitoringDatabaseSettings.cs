@@ -8,6 +8,7 @@ namespace WebApi.Models
     public class FinMonitoringDatabaseSettings : IFinMonitoringDatabaseSettings
     {
         public string FundsCollectionName { get; set; }
+        public string CategoryCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
@@ -15,6 +16,7 @@ namespace WebApi.Models
     public interface IFinMonitoringDatabaseSettings
     {
         string FundsCollectionName { get; set; }
+        string CategoryCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }

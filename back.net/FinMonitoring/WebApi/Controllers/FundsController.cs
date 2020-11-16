@@ -27,30 +27,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public ActionResult<List<Fund>> Get()
         {
-
-            //var newFund = new Fund
-            //{
-
-            //    Amount = 200,
-            //    Currency = "USD",
-            //    FundName = "dron",
-            //    Goal = 1000,
-
-            //    History = new List<FundHistory> {
-            //        new FundHistory {
-            //        Date = DateTime.Now.ToString(),
-            //        Amount = 100
-            //    },
-            //     new FundHistory {
-            //        Date = DateTime.Now.ToString(),
-            //        Amount = 100 }
-
-            //    }
-            //};
-
-            //_fundService.Create(newFund);
-
-            return _fundService.Get();
+         return _fundService.Get();
         }
 
         // GET: api/Funds/5
@@ -72,26 +49,7 @@ namespace WebApi.Controllers
         public ActionResult<Fund> Create(Fund fund)
         {
 
-            //var newFund = new Fund
-            //{
-
-            //    Amount = fund ,
-            //    Currency = "USD",
-            //    FundName = "dron",
-            //    Goal = 1000,
-
-            //    History = new List<FundHistory> { }  };
-                //{
-                    //new FundHistory {
-                    //Date = DateTime.Now.ToString(),
-                    //Amount = 100
-                //},
-                 //new FundHistory {
-                   // Date = DateTime.Now.ToString(),
-                    //Amount = 100 }
-
-                //}
-            //};
+          
 
             _fundService.Create(fund);
 
