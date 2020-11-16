@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useState} from 'react'
 import styles from './Fund.module.css'
-import {IFund} from '../../redux/fund-reduser';
+import {IFund} from '../redux/fund-reduser';
 import {Button} from "../../common-components/customButton/button";
 import {AddingSum, SaveCancelButtons} from "../addingSum/addingSum";
 

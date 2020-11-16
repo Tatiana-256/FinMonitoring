@@ -10,7 +10,7 @@ interface IProps {
     onCancelForm: () => void
 }
 
-export const AddItem: React.FC<IProps> = ({onChangeFundName, onChangeTargetAmount, onChangeCurrency, onSubmitForm, onCancelForm}) => {
+export const AddItemFin: React.FC<IProps> = ({onChangeFundName, onChangeTargetAmount, onChangeCurrency, onSubmitForm, onCancelForm}) => {
 
 
     return <div className={styles.add_item}>

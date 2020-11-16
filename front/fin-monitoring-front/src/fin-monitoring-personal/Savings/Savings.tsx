@@ -1,13 +1,13 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
 import styles from './Savings.module.css'
 import {Button} from "../../common-components/customButton/button";
-import {fundsAPI, IFundLocal} from "../../requests/api";
-import {AddItem} from '../Add-Item/Add-item';
+import {fundsAPI, IFundLocal} from "../requests/api";
+import {AddItemFin} from '../Add-Item/Add-item';
 import {Fund} from "../Fund/Fund";
 import {useDispatch, useSelector} from 'react-redux';
-import {AppStateType} from '../../redux/store';
-import {actions, addFund, deleteFund, editFundAC} from "../../redux/fund-actions";
-import {IFund, IFundAPI, IFundHistory} from "../../redux/fund-reduser";
+import {AppStateType} from '../redux/store';
+import {actions, addFund, deleteFund, editFundAC} from "../redux/fund-actions";
+import {IFund, IFundAPI, IFundHistory} from "../redux/fund-reduser";
 import {FundHeader} from "../FundHeader/FundHeader";
 
 export const Savings = () => {
@@ -100,7 +100,7 @@ export const Savings = () => {
 
     return <div className={styles.add_item}>
         {newFund ?
-            <AddItem onSubmitForm={onSubmitForm}
+            <AddItemFin onSubmitForm={onSubmitForm}
                      onCancelForm={onCancelForm}
                      onChangeCurrency={onChangeCurrency}
                      onChangeFundName={onChangeFundName}
