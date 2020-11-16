@@ -1,0 +1,23 @@
+.container, .container_header {
+    display: flex;
+    justify-content: space-evenly;
+    width: 75%;
+}
+
+.container_header {
+    border-bottom: 2px solid black;
+    height: 50px;
+}
+
+.container{
+    border-bottom: 1px solid black;
+    height: 40px;
+}
+
+
+.options {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
