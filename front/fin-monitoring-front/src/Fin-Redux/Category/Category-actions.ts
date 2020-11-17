@@ -7,11 +7,11 @@ export type categoryActionsType = InferActionsTypes<typeof categoryActions>
 //
 export const categoryActions = {
 
-    getCategories: (category: Array<ICategory>) => ({type: "categoryReducer/GET_CATEGORY", category} as const)
+    getCategories: (category: Array<ICategory>) => ({type: "categoryReducer/GET_CATEGORY", category} as const),
+    deleteCategory: (id: string) => ({type: "categoryReducer/DELETE_CATEGORY", id} as const)
 };
 //     addFund: (newFund: IFund) => ({type: "fundReducer/ADD_FUND", newFund} as const),
 //     editFund: (id: string, newFund: IFund) => ({type: "fundReducer/EDIT_FUND", id, newFund} as const),
-//     deleteFund: (id: string) => ({type: "fundReducer/delete_FUND", id} as const)
 // }
 
 
@@ -26,6 +26,14 @@ export const getCategory = (): thunkType => async (dispatch) => {
     }
 };
 
+export const deleteCategory = (id: string): thunkType => async (dispatch) => {
+    let result = await categoryAPI.deleteCategory(id)
+    if (result) {
+        dispatch(categoryActions.deleteCategory(id))
+    }
+}
+
+
 // export const addCate = (fund: IFundAPI): thunkType => async (dispatch) => {
 //     let result = await fundsAPI.addFund(fund)
 //     if (result) {
@@ -33,13 +41,7 @@ export const getCategory = (): thunkType => async (dispatch) => {
 //     }
 // };
 //
-// export const deleteFund = (id: string): thunkType => async (dispatch) => {
-//     let result = await fundsAPI.deleteFund(id)
-//     if (result) {
-//         dispatch(actions.deleteFund(id))
-//     }
-// }
-//
+
 //
 // export const editFundAC = (id: string, fund: IFund): thunkType => async (dispatch) => {
 //     let result = await fundsAPI.editFund(id, fund)

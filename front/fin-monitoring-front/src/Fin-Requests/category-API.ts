@@ -23,7 +23,7 @@ export const categoryAPI = {
                     return res.data
                 }
             )
-    }
+    },
     // ,
     // addFund(fund: IFundAPI) {
     //     return instance.post("api/Funds", fund
@@ -38,12 +38,13 @@ export const categoryAPI = {
     //         return res.data
     //     })
     // },
-    // deleteFund(id: string) {
-    //     return instance.delete(`api/Funds/${id}`
-    //     ).then(res => {
-    //         console.log(res)
-    //         return res
-    //     })
+    deleteCategory(id: string) {
+        return instance.delete(`api/Category/${id}`
+        ).then(res => {
+            console.log(res)
+            return res
+        })
+    }
     // }
 }
 

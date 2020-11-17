@@ -1,14 +1,14 @@
 
- .general, .red {
-     height: 2.8rem;
-     width: 8.2rem;
-     font-size: 1rem;
-     letter-spacing: 0.04rem;
-     outline: none;
-     font-family: Corporate S, sans-serif;
-     font-weight: normal;
-     border-radius: 53px;
-     border: none;
+.general, .red {
+    height: 2rem;
+    width: 6rem;
+    font-size: 1rem;
+    letter-spacing: 0.04rem;
+    outline: none;
+    font-family: Corporate S, sans-serif;
+    font-weight: normal;
+    border-radius: 53px;
+    border: none;
 
 
 }
@@ -18,7 +18,7 @@
     background-color: #7984EE;
 }
 
-.red{
+.red {
     color: white;
     background-color: #ee505e;
 }

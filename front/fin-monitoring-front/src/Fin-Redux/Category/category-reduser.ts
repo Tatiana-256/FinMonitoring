@@ -19,7 +19,13 @@ export const categoryReducer = (state = initialState, action: categoryActionsTyp
                 ...state,
                 category: action.category
             }
+        case "categoryReducer/DELETE_CATEGORY":
+            return {
+                ...state,
+                category: state.category.filter(cat => cat.id !== action.id)
+            }
     }
+
     return state;
 };
 

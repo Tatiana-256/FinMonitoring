@@ -29,22 +29,52 @@ namespace WebApi.Controllers
         [HttpGet]
         public ActionResult<List<Category>> Get()
         {
-            var newCategory = new Category
-            {
-                CategoryName = "milk"
-            };
-            _categoryService.Create(newCategory);
+            //var newCategory = new Category
+            //{
+             //   CategoryName = "milk"
+            //};
+            //_categoryService.Create(newCategory);
 
             return _categoryService.Get();
         }
 
 
-        // POST: api/Funds
+        // GET: api/Category/5
+        [HttpGet("{id:length(24)}", Name = "GetCategory")]
+        public ActionResult<Category> Get(string id)
+        {
+            var category = _categoryService.Get(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return category;
+        }
+
+
+
+        // POST: api/Category
         [HttpPost]
         public ActionResult<Category> Create(Category category)
         {
             _categoryService.Create(category);
             return CreatedAtRoute("GetCategory", new { id = category.Id.ToString() }, category);
+        }
+
+        // PUT: api/Category/5
+        [HttpPut("{id}")]
+        public void Put(string id, [FromBody] Category value)
+        {
+            _categoryService.Update(id, value);
+        }
+
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(string id)
+        {
+            _categoryService.Remove(id);
         }
 
     }
