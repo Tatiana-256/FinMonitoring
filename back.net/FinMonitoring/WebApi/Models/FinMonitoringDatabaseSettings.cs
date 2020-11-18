@@ -9,6 +9,7 @@ namespace WebApi.Models
     {
         public string FundsCollectionName { get; set; }
         public string CategoryCollectionName { get; set; }
+        public string IngredientsCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
@@ -17,6 +18,7 @@ namespace WebApi.Models
     {
         string FundsCollectionName { get; set; }
         string CategoryCollectionName { get; set; }
+        string IngredientsCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }
