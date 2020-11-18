@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from 'react'
 import {AddItem} from "../../common-components/addItem/Add-item";
-import {addCategory, getCategory, editCategory} from "../../Fin-Redux/Category/Category-actions";
+import {addCategory, getCategory, editCategory, deleteCategory} from "../../Fin-Redux/Category/Category-actions";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from '../../Fin-Redux/store';
 import {Table} from "../../common-components/CommonTable/CommonTable";
@@ -35,13 +35,22 @@ export const Category = () => {
         dispatch(editCategory(id, category))
     }
 
+    const deleteCategory = (id: string) => {
+        dispatch(deleteCategory(id))
+    }
+
+
     return <>
-        <AddItem name={"Category"} onChangeInputName={onChangeInputName} addCategorySubmit={addCategorySubmit}/>
+        <AddItem name={"Category"} onChangeInputName={onChangeInputName} addNewItem={addCategorySubmit}/>
         <div className={styles.category_container}>
-            <Table name={"Category name"} id={"ID"} tableHeader={true} editCategory={editExistCategory}/>
+            <Table name={"Category name"} id={"ID"} tableHeader={true} editItem={editExistCategory}
+                   deleteItem={deleteCategory}/>
             {category.category.map(x => <Table name={x.categoryName}
-                                               id={x.id} key={x.id} tableHeader={false}
-                                               editCategory={editExistCategory}/>)}
+                                               id={x.id} key={x.id}
+                                               tableHeader={false}
+                                               editItem={editExistCategory}
+                                               deleteItem={deleteCategory}
+            />)}
         </div>
     </>
 }
