@@ -29,13 +29,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public ActionResult<List<Category>> Get()
         {
-            //var newCategory = new Category
-            //{
-             //   CategoryName = "milk"
-            //};
-            //_categoryService.Create(newCategory);
-
-            return _categoryService.Get();
+                  return _categoryService.Get();
         }
 
 
