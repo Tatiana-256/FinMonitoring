@@ -5,14 +5,10 @@ import {Button} from '../customButton/button'
 interface IProps {
     name: string,
     onChangeInputName: (e: ChangeEvent<HTMLInputElement>) => void,
-    addCategorySubmit: () => void
-    // onChangeTargetAmount: (e: ChangeEvent<HTMLInputElement>) => void
-    // onChangeCurrency: (e: ChangeEvent<HTMLSelectElement>) => void,
-    // onSubmitForm: () => void
-    // onCancelForm: () => void
+    addNewItem: () => void
 }
 
-export const AddItem: React.FC<IProps> = ({name, addCategorySubmit, onChangeInputName}) => {
+export const AddItem: React.FC<IProps> = ({name, addNewItem, onChangeInputName}) => {
 
     /*_____________________ ADDING NEW ITEM ______________________*/
 
@@ -21,7 +17,7 @@ export const AddItem: React.FC<IProps> = ({name, addCategorySubmit, onChangeInpu
 
     const addNewCategory = () => {
         showAddingFundForm()
-        addCategorySubmit()
+        addNewItem()
 
     }
 

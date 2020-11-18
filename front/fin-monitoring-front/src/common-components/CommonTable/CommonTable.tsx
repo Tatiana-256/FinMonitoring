@@ -6,13 +6,14 @@ import {deleteCategory} from "../../Fin-Redux/Category/Category-actions";
 import {ICategory} from "../../Fin-Redux/Category/category-reduser";
 
 interface IProps {
-    editCategory: (id: string, category: ICategory) => void,
+    editItem: (id: string, category: ICategory) => void,
+    deleteItem: (id: string) => void,
     name: string,
     id: string,
     tableHeader: boolean
 }
 
-export const Table: React.FC<IProps> = ({name, id, tableHeader, editCategory}) => {
+export const Table: React.FC<IProps> = ({name, id, tableHeader, editItem, deleteItem}) => {
     const dispatch = useDispatch();
 
     const [edit, setEdit] = useState(false)
@@ -27,14 +28,17 @@ export const Table: React.FC<IProps> = ({name, id, tableHeader, editCategory}) =
     }
 
     const saveChanges = () => {
-        debugger
-        editCategory(id, {id: id, categoryName: changeInput})
+        editItem(id, {id: id, categoryName: changeInput})
         setEdit(prevState => !prevState)
 
     }
 
+    const deleteIt = () => {
+        deleteItem(id)
+    }
+
     return <div className={tableHeader ? styles.container_header : styles.container}>
-        {edit ? <input defaultValue={name} className={styles.options} onChange={onInputChange}/> :
+        {edit ? <input defaultValue={name} className={styles.options_input} onChange={onInputChange}/> :
             <div className={styles.options}>{name}</div>}
         <div className={styles.options}>{id}</div>
         <div style={{display: "flex", alignItems: "center"}}>
@@ -56,10 +60,7 @@ export const Table: React.FC<IProps> = ({name, id, tableHeader, editCategory}) =
                                 style={{marginRight: "2%"}}>
                             Edit
                         </Button>
-                        <Button buttonClass={'red'} onClick={() => {
-                            console.log(`delete: ${id}`)
-                            dispatch(deleteCategory(id))
-                        }}>
+                        <Button buttonClass={'red'} onClick={deleteIt}>
                             Delete
                         </Button></>}
         </div>
