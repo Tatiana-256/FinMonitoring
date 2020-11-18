@@ -1,6 +1,6 @@
 import {baseThunkType, InferActionsTypes} from "../store";
 import {ICategory} from "./category-reduser";
-import {categoryAPI} from "../../Fin-Requests/category-API";
+import {categoryAPI, ICategoryAPI} from "../../Fin-Requests/category-API";
 
 
 export type categoryActionsType = InferActionsTypes<typeof categoryActions>
@@ -8,11 +8,10 @@ export type categoryActionsType = InferActionsTypes<typeof categoryActions>
 export const categoryActions = {
 
     getCategories: (category: Array<ICategory>) => ({type: "categoryReducer/GET_CATEGORY", category} as const),
-    deleteCategory: (id: string) => ({type: "categoryReducer/DELETE_CATEGORY", id} as const)
+    deleteCategory: (id: string) => ({type: "categoryReducer/DELETE_CATEGORY", id} as const),
+    addCategory: (newCategory: ICategory) => ({type: "categoryReducer/ADD_CATEGORY", newCategory} as const),
+    editCategory: (id: string, category: ICategory) => ({type: "categoryReducer/EDIT_CATEGORY", id, category} as const),
 };
-//     addFund: (newFund: IFund) => ({type: "fundReducer/ADD_FUND", newFund} as const),
-//     editFund: (id: string, newFund: IFund) => ({type: "fundReducer/EDIT_FUND", id, newFund} as const),
-// }
 
 
 // //_________________ thunk-creators____________________
@@ -34,19 +33,17 @@ export const deleteCategory = (id: string): thunkType => async (dispatch) => {
 }
 
 
-// export const addCate = (fund: IFundAPI): thunkType => async (dispatch) => {
-//     let result = await fundsAPI.addFund(fund)
-//     if (result) {
-//         dispatch(actions.addFund(result))
-//     }
-// };
-//
+export const addCategory = (category: ICategoryAPI): thunkType => async (dispatch) => {
+    let result = await categoryAPI.addCategory(category)
+    if (result) {
+        dispatch(categoryActions.addCategory(result))
+    }
+};
 
-//
-// export const editFundAC = (id: string, fund: IFund): thunkType => async (dispatch) => {
-//     let result = await fundsAPI.editFund(id, fund)
-//     debugger
-//     if (result === '') {
-//         dispatch(actions.editFund(id, fund))
-//     }
-// }
+
+export const editCategory = (id: string, category: ICategory): thunkType => async (dispatch) => {
+    let result = await categoryAPI.editCategory(id, category)
+    if (result === '') {
+        dispatch(categoryActions.editCategory(id, category))
+    }
+}

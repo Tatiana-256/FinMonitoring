@@ -24,20 +24,19 @@ export const categoryAPI = {
                 }
             )
     },
-    // ,
-    // addFund(fund: IFundAPI) {
-    //     return instance.post("api/Funds", fund
-    //     ).then(res => {
-    //         console.log(res.data)
-    //         return res.data
-    //     })
-    // },
-    // editFund(id: string, fund: IFundAPI) {
-    //     return instance.put(`api/Funds/${id}`, fund).then(res => {
-    //         console.log(res.data)
-    //         return res.data
-    //     })
-    // },
+    addCategory(category: ICategoryAPI) {
+        return instance.post("api/Category", category
+        ).then(res => {
+            console.log(res.data)
+            return res.data
+        })
+    },
+    editCategory(id: string, category: ICategoryAPI) {
+        return instance.put(`api/Category/${id}`, category).then(res => {
+            console.log(res.data)
+            return res.data
+        })
+    },
     deleteCategory(id: string) {
         return instance.delete(`api/Category/${id}`
         ).then(res => {
@@ -49,3 +48,6 @@ export const categoryAPI = {
 }
 
 
+export interface ICategoryAPI {
+    categoryName: string
+}

@@ -9,14 +9,16 @@
 .buttons {
     width: 25%;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 
 .add_fund {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     height: 10vh;
+    width: 90%;
 }
 
 .plus {
