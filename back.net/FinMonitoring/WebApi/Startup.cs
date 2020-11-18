@@ -35,8 +35,9 @@ namespace WebApi
             services.AddSingleton<IFinMonitoringDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<FinMonitoringDatabaseSettings>>().Value);
 
-            services.AddSingleton<CategoryService>();
             services.AddSingleton<FundService>();
+            services.AddSingleton<CategoryService>();
+            services.AddSingleton<IngredientsService>();
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
