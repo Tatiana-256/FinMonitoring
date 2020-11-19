@@ -1,18 +1,5 @@
-import axios from "axios";
-import {Simulate} from "react-dom/test-utils";
 import {ICategory} from "../Fin-Redux/Category/category-reduser";
-
-
-const dev = 'https://localhost:5005'
-
-const instance = axios.create({
-    baseURL: dev,
-    headers: {
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Origin': '*'
-    }
-})
+import {instance} from "./API-settings";
 
 
 export const categoryAPI = {

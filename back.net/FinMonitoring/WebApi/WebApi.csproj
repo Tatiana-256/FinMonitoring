@@ -10,5 +10,11 @@
     <PackageReference Include="MongoDB.Driver.GridFS" Version="2.11.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Properties\launchSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 
 </Project>
