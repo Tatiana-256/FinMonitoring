@@ -21,9 +21,16 @@ export const AddItem: React.FC<IProps> = ({name, addNewItem, onChangeInputName})
 
     }
 
+    // @ts-ignore
+    const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            addNewCategory()
+        }
+    }
+
     return <>
         {newItem ? <div className={styles.add_item}>
-                <input placeholder={`${name} name`} type='text' onChange={onChangeInputName}/>
+                <input placeholder={`${name} name`} type='text' onChange={onChangeInputName} onKeyPress={onKeyPress}/>
                 <div className={styles.buttons}>
                     <Button buttonClass={'general'} onClick={addNewCategory}>Add</Button>
                     <Button buttonClass={'red'} style={{marginLeft: "5%"}} onClick={() => {

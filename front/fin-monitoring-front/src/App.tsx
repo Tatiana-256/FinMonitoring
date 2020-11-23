@@ -6,13 +6,18 @@ import {Provider} from 'react-redux';
 import {Category} from "./components/Category/Category";
 import {Ingredients} from "./components/Ingredients/Ingredients";
 import store from './Fin-Redux/store';
+import {InterfaceProducts} from './components/InterfaceProducts/InterfaceProducts';
+import {Product} from "./components/InterfaceProducts/Product/Product";
 
 
 function App() {
     return (
         <>
+            <Route exact path="/Products/:prod" component={Product}/>
             <Route exact path="/Categories" component={Category}/>
             <Route exact path="/Ingredients" component={Ingredients}/>
+            <Route exact path="/InterfaceProducts" component={InterfaceProducts}/>
+
         </>
     );
 }

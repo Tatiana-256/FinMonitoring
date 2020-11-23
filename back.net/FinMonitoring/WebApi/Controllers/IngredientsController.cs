@@ -29,11 +29,11 @@ namespace WebApi.Controllers
         public ActionResult<List<Ingredient>> Get()
         {
 
-            var ingredient = new Ingredient
-            {
-                IngredientName = "Milk"
-            };
-            _ingredientsService.Create(ingredient);
+            //var ingredient = new Ingredient
+            //{
+             //   IngredientName = "Milk"
+            //};
+            //_ingredientsService.Create(ingredient);
 
             return _ingredientsService.Get();
         }

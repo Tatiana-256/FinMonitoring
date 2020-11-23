@@ -31,7 +31,7 @@ export const categoryAPI = {
             return res
         })
     }
-    // }
+
 }
 
 

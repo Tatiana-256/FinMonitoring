@@ -16,28 +16,27 @@ export const ingredientsAPI = {
             console.log(res)
             return res
         })
-    }
-    // addCategory(category: ICategoryAPI) {
-    //     return instance.post("api/Category", category
-    //     ).then(res => {
-    //         console.log(res.data)
-    //         return res.data
-    //     })
-    // },
-    // editCategory(id: string, category: ICategoryAPI) {
-    //     return instance.put(`api/Category/${id}`, category).then(res => {
-    //         console.log(res.data)
-    //         return res.data
-    //     })
-    // },
+    },
 
-    // }
-    // }
+    addIngredient(ingredient: IIngredientAPI) {
+        return instance.post("api/Ingredients", ingredient
+        ).then(res => {
+            console.log(res.data)
+            return res.data
+        })
+    },
+    editIngredient(id: string, ingredient: IIngredientAPI) {
+        return instance.put(`api/Ingredients/${id}`, ingredient).then(res => {
+            console.log(res.data)
+            return res.data
+        })
+    },
+
 }
 
 
-export interface ICategoryAPI {
-    categoryName: string
+export interface IIngredientAPI {
+    ingredientName: string
 }
 
 export interface IIngredient {

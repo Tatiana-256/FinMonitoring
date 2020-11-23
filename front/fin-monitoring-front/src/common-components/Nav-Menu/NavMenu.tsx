@@ -11,5 +11,8 @@ export const NavMenu = () => {
         <NavLink to="/Ingredients">
             <div>Ingredients</div>
         </NavLink>
+        <NavLink to="/InterfaceProducts">
+            <div>Interface Products</div>
+        </NavLink>
     </div>
 };

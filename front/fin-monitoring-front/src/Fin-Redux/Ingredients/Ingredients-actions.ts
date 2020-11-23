@@ -1,5 +1,5 @@
 import {baseThunkType, InferActionsTypes} from "../store";
-import {IIngredient, ingredientsAPI} from "../../Fin-Requests/Ingredients-API";
+import {IIngredient, IIngredientAPI, ingredientsAPI} from "../../Fin-Requests/Ingredients-API";
 
 
 export type ingredientsActionsType = InferActionsTypes<typeof ingredientsActions>
@@ -11,10 +11,17 @@ export const ingredientsActions = {
         type: "ingredientsReducer/GET_INGREDIENTS",
         ingredients
     } as const),
-    deleteIngredient: (id: string) => ({type: "ingredientsReducer/delete_INGREDIENTS", id} as const)
+    deleteIngredient: (id: string) => ({type: "ingredientsReducer/delete_INGREDIENTS", id} as const),
+    editIngredient: (id: string, newIngredient: IIngredient) => ({
+        type: "ingredientsReducer/EDIT_INGREDIENTS",
+        id,
+        newIngredient
+    } as const),
+    addIngredient: (newIngredient: IIngredient) => ({
+        type: "ingredientsReducer/ADD_INGREDIENT",
+        newIngredient
+    } as const),
 };
-//     addFund: (newFund: IFund) => ({type: "fundReducer/ADD_FUND", newFund} as const),
-//     editFund: (id: string, newFund: IFund) => ({type: "fundReducer/EDIT_FUND", id, newFund} as const),
 // }
 
 
@@ -35,3 +42,21 @@ export const deleteIngredient = (id: string): thunkType => async (dispatch) => {
         dispatch(ingredientsActions.deleteIngredient(id))
     }
 };
+export const editIngredient = (id: string, ingredient: IIngredient): thunkType => async (dispatch) => {
+    debugger
+    let result = await ingredientsAPI.editIngredient(id, ingredient)
+    if (result === "") {
+        dispatch(ingredientsActions.editIngredient(id, ingredient))
+    }
+};
+
+export const addNewIngredient = (ingredient: IIngredientAPI): thunkType => async (dispatch) => {
+    let result = await ingredientsAPI.addIngredient(ingredient)
+    if (result) {
+        dispatch(ingredientsActions.addIngredient(result))
+    }
+}
+
+
+
+

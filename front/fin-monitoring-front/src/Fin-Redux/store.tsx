@@ -3,11 +3,13 @@ import {ThunkAction} from "redux-thunk";
 import thunkMiddleware from "redux-thunk"
 import {ingredientsReducer} from "./Ingredients/Ingredients-reduser";
 import {categoryReducer} from "./Category/category-reduser";
+import {productsReducer} from "./Products/Products-reduser";
 
 
 let reducers = combineReducers({
     ingredients: ingredientsReducer,
-    category: categoryReducer
+    category: categoryReducer,
+    products: productsReducer
 })
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));

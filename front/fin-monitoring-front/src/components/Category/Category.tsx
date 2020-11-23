@@ -43,13 +43,16 @@ export const Category = () => {
     return <>
         <AddItem name={"Category"} onChangeInputName={onChangeInputName} addNewItem={addCategorySubmit}/>
         <div className={styles.category_container}>
-            <Table name={"Category name"} id={"ID"} tableHeader={true} editItem={editExistCategory}
+            <Table name={"Category name"} id={"ID"} tableHeader={true} editItemCategory={editExistCategory}
+                   tableType={'Category'}
+
                    deleteItem={deleteCategory}/>
             {category.category.map(x => <Table name={x.categoryName}
                                                id={x.id} key={x.id}
                                                tableHeader={false}
-                                               editItem={editExistCategory}
+                                               editItemCategory={editExistCategory}
                                                deleteItem={deleteCategory}
+                                               tableType={'Category'}
             />)}
         </div>
     </>

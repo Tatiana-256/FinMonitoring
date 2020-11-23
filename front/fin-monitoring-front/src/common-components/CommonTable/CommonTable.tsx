@@ -4,16 +4,19 @@ import {Button} from "../customButton/button";
 import {useDispatch} from "react-redux";
 import {deleteCategory} from "../../Fin-Redux/Category/Category-actions";
 import {ICategory} from "../../Fin-Redux/Category/category-reduser";
+import {IIngredient, IIngredientAPI} from "../../Fin-Requests/Ingredients-API";
 
 interface IProps {
-    editItem: (id: string, category: ICategory) => void,
+    editItemCategory?: (id: string, category: ICategory) => void,
+    editItemIngredient?: (id: string, ingredient: IIngredient) => void,
+    tableType: 'Ingredient' | 'Category'
     deleteItem: (id: string) => void,
     name: string,
     id: string,
     tableHeader: boolean
 }
 
-export const Table: React.FC<IProps> = ({name, id, tableHeader, editItem, deleteItem}) => {
+export const Table: React.FC<IProps> = ({name, id, tableHeader, editItemCategory, deleteItem, editItemIngredient, tableType}) => {
     const dispatch = useDispatch();
 
     const [edit, setEdit] = useState(false)
@@ -28,7 +31,8 @@ export const Table: React.FC<IProps> = ({name, id, tableHeader, editItem, delete
     }
 
     const saveChanges = () => {
-        editItem(id, {id: id, categoryName: changeInput})
+        tableType === 'Category' ? editItemCategory!(id, {id: id, categoryName: changeInput}) :
+            editItemIngredient!(id, {ingredientName: changeInput, id: id})
         setEdit(prevState => !prevState)
 
     }
@@ -37,10 +41,23 @@ export const Table: React.FC<IProps> = ({name, id, tableHeader, editItem, delete
         deleteItem(id)
     }
 
+
+    const onKeyPress = (e: any) => {
+        debugger
+        if (e.key === 'Escape') {
+            setEdit(prevState => !prevState)
+        } else if (e.key === "Enter") {
+            saveChanges()
+        }
+    }
+
+
     return <div className={tableHeader ? styles.container_header : styles.container}>
-        {edit ? <input defaultValue={name} className={styles.options_input} onChange={onInputChange}/> :
+        {edit ? <input defaultValue={name} className={styles.options_input} onChange={onInputChange}
+                       onKeyPress={onKeyPress}
+            /> :
             <div className={styles.options}>{name}</div>}
-        <div className={styles.options}>{id}</div>
+        <div className={styles.options}>{id === "ID" ? id : id.slice(19)}</div>
         <div style={{display: "flex", alignItems: "center"}}>
             {tableHeader ? <div style={{width: "12rem"}}/> :
                 edit ?

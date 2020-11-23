@@ -13,11 +13,38 @@ export const ingredientsReducer = (state = initialState, action: ingredientsActi
             return {
                 ...state,
                 ingredients: action.ingredients
-            }
+            };
         case "ingredientsReducer/delete_INGREDIENTS":
             return {
                 ...state,
                 ingredients: state.ingredients.filter(ing => ing.id !== action.id)
+            };
+        case "ingredientsReducer/EDIT_INGREDIENTS":
+            debugger
+            return {
+                ...state,
+                ingredients: state.ingredients.map(ing => {
+                    if (ing.id !== action.id) {
+                        return ing
+                    } else {
+                        return {...ing, ...action.newIngredient}
+                    }
+                })
+
+                // ...state,
+                // category: state.category.map(category => {
+                //     if (category.id !== action.id) {
+                //         return category
+                //     } else {
+                //         return {...category, ...action.category}
+                //     }
+                // })
+
+            }
+        case "ingredientsReducer/ADD_INGREDIENT":
+            return {
+                ...state,
+                ingredients: [...state.ingredients, action.newIngredient]
             }
     }
     return state;
