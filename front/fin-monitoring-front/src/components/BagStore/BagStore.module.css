@@ -1,0 +1,36 @@
+.store_container {
+    width: 40%;
+    border: 2px solid black;
+}
+
+.store_text {
+    font-size: 2rem;
+    color: #7984EE;
+    font-weight: bold;
+    text-align: center;
+    padding: 1%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.store_bag {
+    height: 30px;
+    width: auto;
+}
+
+.head {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    /*font-weight: bold;*/
+}
+
+.head_text {
+    width: 100%;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    border-left: 1px solid black;
+
+}

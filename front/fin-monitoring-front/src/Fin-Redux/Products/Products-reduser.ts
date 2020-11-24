@@ -5,41 +5,73 @@ import esspresso from '../../common-images/esspresso.jpg'
 import latte from '../../common-images/latte.jpg'
 import mafin from '../../common-images/mafin.jpg'
 import icetea from '../../common-images/icetea.jpg'
+import cold from '../../common-images/cold-drinks.jpg'
+import hot from '../../common-images/hot-drinks.jpg'
+import hotdog from '../../common-images/hot-dog.jpg'
+import food from '../../common-images/food.jpg'
 
 export type initialStateType = typeof initialState
 const initialState = {
     products: [
         {
+            id: "",
             name: "Hot Drinks",
             subProducts: [
                 {
+                    id: "",
                     productName: "Latte",
+                    price: 12,
                     img: latte
                 },
                 {
+                    id: '',
                     productName: "Americano",
-                    img: amer
+                    img: amer,
+                    price: 12,
 
                 },
                 {
+                    id: '',
                     productName: "Espresso",
-                    img: esspresso
+                    img: esspresso,
+                    price: 12,
                 },
                 {
+                    id: '',
                     productName: "Capuchino",
-                    img: cap
+                    img: cap,
+                    price: 12,
                 },
 
-            ]
+            ],
+            img: cold
         },
         {
+            id: '',
             name: "Cold Drinks",
             subProducts: [
                 {
+                    id: '',
                     productName: "Icetea",
-                    img: icetea
+                    img: icetea,
+                    price: 12,
+
                 }
-            ]
+            ],
+            img: hot
+        },
+        {
+            id: '',
+            name: "Food",
+            subProducts: [
+                {
+                    id: '',
+                    productName: "Hot-dog",
+                    img: hotdog,
+                    price: 12,
+                }
+            ],
+            img: food
         }
 
     ]
@@ -63,11 +95,16 @@ export interface IProducts {
 }
 
 export interface IProd {
+    id: string
     productName: string
-    img?: any
+    img?: string,
+    price: number
+
 }
 
 export interface ISubProduct {
+    id: string,
+    name: string,
     subProducts: Array<IProd>,
-    name: string
+    img: string
 }

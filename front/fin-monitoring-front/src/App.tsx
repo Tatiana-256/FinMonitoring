@@ -8,6 +8,7 @@ import {Ingredients} from "./components/Ingredients/Ingredients";
 import store from './Fin-Redux/store';
 import {InterfaceProducts} from './components/InterfaceProducts/InterfaceProducts';
 import {Product} from "./components/InterfaceProducts/Product/Product";
+import { BagStore } from './components/BagStore/BagStore';
 
 
 function App() {
@@ -27,9 +28,13 @@ function AppGlobal() {
         <HashRouter>
             <Provider store={store}>
                 <NavMenu/>
+                <div className='App_container'>
                 <div className="App">
                     <App/>
                 </div>
+                    <BagStore/>
+                </div>
+
             </Provider>
         </HashRouter>
     );

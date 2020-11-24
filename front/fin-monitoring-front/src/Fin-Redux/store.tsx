@@ -4,12 +4,14 @@ import thunkMiddleware from "redux-thunk"
 import {ingredientsReducer} from "./Ingredients/Ingredients-reduser";
 import {categoryReducer} from "./Category/category-reduser";
 import {productsReducer} from "./Products/Products-reduser";
+import {bagReducer} from "./Bag-Store/BagStore-reduser";
 
 
 let reducers = combineReducers({
     ingredients: ingredientsReducer,
     category: categoryReducer,
-    products: productsReducer
+    products: productsReducer,
+    bagItems: bagReducer
 })
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));

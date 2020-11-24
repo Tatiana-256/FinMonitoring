@@ -18,7 +18,7 @@ export const Category: React.FC<ICategory> = ({category}) => {
     }
 
     return <div className={styles.category_container} onClick={goToCategory}>
-        <div className={styles.category}>
+        <div className={styles.category} style={{backgroundImage: `url(${category.img})`}}>
             {category.name}
         </div>
     </div>
