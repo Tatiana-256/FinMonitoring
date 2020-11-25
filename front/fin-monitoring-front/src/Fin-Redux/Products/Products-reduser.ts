@@ -44,7 +44,7 @@ const initialState = {
                 },
 
             ],
-            img: cold
+            img: hot
         },
         {
             id: '',
@@ -58,7 +58,7 @@ const initialState = {
 
                 }
             ],
-            img: hot
+            img: cold
         },
         {
             id: '',

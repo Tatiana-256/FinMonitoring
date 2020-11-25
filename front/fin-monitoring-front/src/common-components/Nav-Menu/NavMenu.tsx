@@ -9,10 +9,10 @@ export const NavMenu = () => {
         <div style={{padding: '0 3%'}}><BackButton/></div>
         <div className={styles.nav_menu}>
             <NavLink to="/Categories">
-                <div>Categories</div>
+                <div>Add Categories</div>
             </NavLink>
             <NavLink to="/Ingredients">
-                <div>Ingredients</div>
+                <div>Add Ingredients</div>
             </NavLink>
             <NavLink to="/InterfaceProducts">
                 <div>Interface Products</div>

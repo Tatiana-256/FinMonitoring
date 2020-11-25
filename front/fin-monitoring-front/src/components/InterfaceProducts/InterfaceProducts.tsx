@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./InterfaceProducts.module.css";
-import {Product} from "./Product/Product";
+import {ProductContainer} from "./Product/ProductContainer";
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../Fin-Redux/store";
 import {Category} from "./Category";
