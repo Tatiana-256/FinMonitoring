@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import styles from './Product.module.css'
 import {IProd} from "../../../Fin-Redux/Products/Products-reduser";
 import {RouteComponentProps} from 'react-router-dom';
@@ -26,7 +26,7 @@ export const ProductContainer: React.FC<Props> = ({match}) => {
 
     const dispatch = useDispatch();
 
-    const addToBag = (prodName: string, prodPrice: number, productAmount: number) => {
+    const addToBag = useCallback((prodName: string, prodPrice: number, productAmount: number) => {
 
         const item = {
             id: Math.random().toString(),
@@ -36,7 +36,7 @@ export const ProductContainer: React.FC<Props> = ({match}) => {
         }
         dispatch(bagActions.addProductToBag(item))
         dispatch(bagActions.addTotalToBag(productAmount * prodPrice))
-    }
+    }, [])
 
 
     // addProductToBag
