@@ -23,9 +23,8 @@ export const Ingredients = () => {
 
 
     const {ingredients} = useSelector((store: AppStateType) => store);
-
-    console.log(ingredients)
     const [newIngredientName, setNewIngredientName] = useState('');
+
 
     const onChangeInputName = (e: ChangeEvent<HTMLInputElement>) => {
         setNewIngredientName(e.currentTarget.value);

@@ -16,7 +16,7 @@ interface IProps {
     tableHeader: boolean
 }
 
-export const Table: React.FC<IProps> = ({name, id, tableHeader, editItemCategory, deleteItem, editItemIngredient, tableType}) => {
+export const Table: React.FC<IProps> = React.memo(({name, id, tableHeader, editItemCategory, deleteItem, editItemIngredient, tableType}) => {
     const dispatch = useDispatch();
 
     const [edit, setEdit] = useState(false)
@@ -82,4 +82,4 @@ export const Table: React.FC<IProps> = ({name, id, tableHeader, editItemCategory
                         </Button></>}
         </div>
     </div>
-}
+})

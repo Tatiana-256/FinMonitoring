@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react'
+import React, {ChangeEvent, useCallback, useEffect, useState} from 'react'
 import {AddItem} from "../../common-components/addItem/Add-item";
 import {addCategory, getCategory, editCategory, deleteCategory} from "../../Fin-Redux/Category/Category-actions";
 import {useDispatch, useSelector} from "react-redux";
@@ -11,7 +11,6 @@ import {ICategory} from "../../Fin-Redux/Category/category-reduser";
 
 export const Category = () => {
     useEffect(() => {
-            console.log("hey")
             dispatch(getCategory())
         }, []
     )
@@ -27,17 +26,16 @@ export const Category = () => {
     }
 
     const addCategorySubmit = () => {
-        debugger
         dispatch(addCategory({categoryName: newCategoryName}))
     }
 
-    const editExistCategory = (id: string, category: ICategory) => {
+    const editExistCategory = useCallback((id: string, category: ICategory) => {
         dispatch(editCategory(id, category))
-    }
+    }, [])
 
-    const deleteCategory = (id: string) => {
+    const deleteCategory = useCallback((id: string) => {
         dispatch(deleteCategory(id))
-    }
+    },[])
 
 
     return <>

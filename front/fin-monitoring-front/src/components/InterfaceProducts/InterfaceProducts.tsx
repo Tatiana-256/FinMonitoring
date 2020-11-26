@@ -11,7 +11,6 @@ export const InterfaceProducts = () => {
     const {products} = useSelector((store: AppStateType) => store);
 
     return <div className={styles.products_container}>
-
         {products.products.map(prod => <Category category={prod}/>)}
     </div>
 }
