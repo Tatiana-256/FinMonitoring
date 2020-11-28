@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,13 +36,22 @@ namespace WebApi
             services.AddSingleton<IFinMonitoringDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<FinMonitoringDatabaseSettings>>().Value);
 
-            services.AddSingleton<FundService>();
-            services.AddSingleton<CategoryService>();
-            services.AddSingleton<IngredientsService>();
+            services.AddSingleton<FundService>();//mongo
+            services.AddSingleton<CategoryServiceMongo>();//mongo
+            services.AddSingleton<IngredientsService>();//mongo
+
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
+
+            // получаем строку подключения из файла конфигурации
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            // добавляем контекст MobileContext в качестве сервиса в приложение
+            services.AddDbContext<ApplicationContext>(options =>
+                options.UseSqlServer(connection));
+
+            services.AddTransient<CategoryService>();
 
             services.AddControllers();
         }

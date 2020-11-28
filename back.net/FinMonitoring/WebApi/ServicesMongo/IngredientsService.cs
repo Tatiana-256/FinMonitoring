@@ -9,32 +9,32 @@ namespace WebApi.Services
 {
     public class IngredientsService
     {
-        private readonly IMongoCollection<Ingredient> _ingredients;
+        private readonly IMongoCollection<IngredientMongo> _ingredients;
 
         public IngredientsService(IFinMonitoringDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
-            _ingredients = database.GetCollection<Ingredient>(settings.IngredientsCollectionName);
+            _ingredients = database.GetCollection<IngredientMongo>(settings.IngredientsCollectionName);
         }
 
-        public List<Ingredient> Get() =>
+        public List<IngredientMongo> Get() =>
             _ingredients.Find(i => true).ToList();
 
-        public Ingredient Get(string id) =>
-            _ingredients.Find<Ingredient>(i => i.Id == id).FirstOrDefault();
+        public IngredientMongo Get(string id) =>
+            _ingredients.Find<IngredientMongo>(i => i.Id == id).FirstOrDefault();
 
-        public Ingredient Create(Ingredient ingredient)
+        public IngredientMongo Create(IngredientMongo ingredient)
         {
             _ingredients.InsertOne(ingredient);
             return ingredient;
         }
 
-        public void Update(string id, Ingredient ingredientIn) =>
+        public void Update(string id, IngredientMongo ingredientIn) =>
             _ingredients.ReplaceOne(i => i.Id == id, ingredientIn);
 
-        public void Remove(Ingredient ingredientIn) =>
+        public void Remove(IngredientMongo ingredientIn) =>
             _ingredients.DeleteOne(i => i.Id == ingredientIn.Id);
 
         public void Remove(string id) =>

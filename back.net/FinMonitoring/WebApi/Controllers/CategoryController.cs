@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Dto;
 using WebApi.Models;
 using WebApi.Services;
 
@@ -27,48 +28,39 @@ namespace WebApi.Controllers
 
         // GET: api/Category
         [HttpGet]
-        public ActionResult<List<Category>> Get()
+        public ResponseWrapper<IEnumerable<CategoryDto>> Get()
         {
-                  return _categoryService.Get();
+            return _categoryService.GetAllCategories();
         }
-
-
-        // GET: api/Category/5
-        [HttpGet("{id:length(24)}", Name = "GetCategory")]
-        public ActionResult<Category> Get(string id)
-        {
-            var category = _categoryService.Get(id);
-
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return category;
-        }
-
-
 
         // POST: api/Category
         [HttpPost]
-        public ActionResult<Category> Create(Category category)
+        public async Task<ResponseWrapper<CategoryDto>> Create([FromBody] string categoryName)
         {
-            _categoryService.Create(category);
-            return CreatedAtRoute("GetCategory", new { id = category.Id.ToString() }, category);
+            if(string.IsNullOrEmpty(categoryName))
+            {
+                return new ResponseWrapper<CategoryDto>
+                {
+                    IsError = true,
+                    Message = "Name cannot be null or empty"
+                };
+            }
+
+            return await _categoryService.Create(categoryName);
         }
 
         // PUT: api/Category/5
         [HttpPut("{id}")]
-        public void Put(string id, [FromBody] Category value)
+        public async Task<ResponseWrapper<CategoryDto>> Put(int id, [FromBody] string value)
         {
-            _categoryService.Update(id, value);
+            return await _categoryService.Update(id, value);
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/Category/5
         [HttpDelete("{id}")]
-        public void Delete(string id)
+        public async Task<ResponseWrapper<bool>> Delete(int id)
         {
-            _categoryService.Remove(id);
+            return await _categoryService.Delete(id);
         }
 
     }

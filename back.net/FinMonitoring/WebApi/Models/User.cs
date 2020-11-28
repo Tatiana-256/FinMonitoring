@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
-    public class Category
+    public class User
     {
         public int Id { get; set; }
-
         public string Name { get; set; }
-
-        public ICollection<Product> Products { get; set; }
+        public int Age { get; set; }
+        public int Number { get; set; }
     }
 }

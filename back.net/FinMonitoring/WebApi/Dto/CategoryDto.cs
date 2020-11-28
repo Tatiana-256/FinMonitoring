@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApi.Models
+namespace WebApi.Dto
 {
-    public class Category
+    public class CategoryDto
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        public ICollection<Product> Products { get; set; }
     }
 }

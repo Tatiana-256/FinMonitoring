@@ -5,18 +5,14 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
-    public class Ingredient
+    public class Product
     {
         public int Id { get; set; }
-        
         public string Name { get; set; }
-
-        public double Amount { get; set; }
-
+        public double Price { get; set; }
         public IList<IngredientProduct> IngredientProduct { get; set; }
 
-        public IList<IngredientHistory> IngredientHistory { get; set; }
-
-        //MeasurementId
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }
