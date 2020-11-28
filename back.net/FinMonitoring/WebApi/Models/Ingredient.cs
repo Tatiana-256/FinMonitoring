@@ -17,6 +17,8 @@ namespace WebApi.Models
 
         public IList<IngredientHistory> IngredientHistory { get; set; }
 
-        //MeasurementId
+        public int MeasurementId { get; set; }
+        public Measurement Measurement { get; set; }
+
     }
 }

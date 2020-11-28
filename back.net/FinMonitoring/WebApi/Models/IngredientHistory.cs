@@ -13,7 +13,9 @@ namespace WebApi.Models
 
         public int IngregientId { get; set; }
         public Ingredient Ingredient { get; set; }
-        //UserId
+
+        public int? SupplyingId { get; set; }
+        public Supplying Supplying { get; set; }
         //OperationTypeId
     }
 }

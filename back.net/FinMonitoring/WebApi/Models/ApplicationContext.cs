@@ -22,11 +22,14 @@ namespace WebApi.Models
                 .WithMany(g => g.Products)
                 .HasForeignKey(s => s.Id);
 
+            //OneToMany (One ingredient has many IngredientHistory)
             modelBuilder.Entity<IngredientHistory>()
                 .HasOne<Ingredient>(s => s.Ingredient)
                 .WithMany(g => g.IngredientHistory)
                 .HasForeignKey(s => s.Id);
 
+
+            //ManyToMany
             modelBuilder.Entity<IngredientProduct>().HasKey(sc => new { sc.IngredientId, sc.ProductId });
             modelBuilder.Entity<IngredientProduct>()
                 .HasOne<Ingredient>(sc => sc.Ingredient)
@@ -45,5 +48,6 @@ namespace WebApi.Models
         public DbSet<IngredientHistory> IngredientHistory { get; set; }
         public DbSet<Measurement> Measurements { get; set; }
         public DbSet<IngredientProduct> IngredientProduct { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
     }
 }

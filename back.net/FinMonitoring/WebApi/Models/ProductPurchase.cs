@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
-    public class IngredientProduct
+    public class ProductPurchase
     {
-        public double AmountIngredients { get; set; }
-
-        public int IngredientId { get; set; }
-        public Ingredient Ingredient { get; set; }
+        public double AmountOfProduct { get; set; }
 
         public int ProductId { get; set; }
         public Product Product { get; set; }
+
+        public int PurchaseId { get; set; }
+        public Purchase Purchase { get; set; }
     }
 }
