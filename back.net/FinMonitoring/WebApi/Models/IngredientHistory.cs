@@ -8,6 +8,9 @@ namespace WebApi.Models
     public class IngredientHistory
     {
         public int Id { get; set; }
+
+        public DateTime Date { get; set; }
+
         public double AmountFrom { get; set; }
         public double AmountTo { get; set; }
 
@@ -16,6 +19,8 @@ namespace WebApi.Models
 
         public int? SupplyingId { get; set; }
         public Supplying Supplying { get; set; }
-        //OperationTypeId
+
+        public int OperationTypeId { get; set; }
+        public OperationType OperationType { get; set; }
     }
 }
