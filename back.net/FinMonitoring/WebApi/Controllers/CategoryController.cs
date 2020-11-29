@@ -62,6 +62,5 @@ namespace WebApi.Controllers
         {
             return await _categoryService.Delete(id);
         }
-
     }
 }
