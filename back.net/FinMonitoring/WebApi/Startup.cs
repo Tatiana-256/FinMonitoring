@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+using WebApi.Actions;
 using WebApi.Models;
 using WebApi.Services;
 
@@ -45,13 +47,13 @@ namespace WebApi
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
 
-            // получаем строку подключения из файла конфигурации
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            // добавляем контекст MobileContext в качестве сервиса в приложение
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(connection));
 
             services.AddTransient<CategoryService>();
+
+            services.AddSwaggerConfiguration();
 
             services.AddControllers();
         }
@@ -64,6 +66,8 @@ namespace WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwaggerConfiguration();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -71,7 +75,6 @@ namespace WebApi
             app.UseAuthorization();
 
             app.UseCors(options => options.AllowAnyOrigin());
-
 
             app.UseEndpoints(endpoints =>
             {
