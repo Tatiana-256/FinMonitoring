@@ -20,7 +20,7 @@ namespace WebApi.Models
         public int? SupplyingId { get; set; }
         public Supplying Supplying { get; set; }
 
-        public int OperationTypeId { get; set; }
-        public OperationType OperationType { get; set; }
+        public int TypeOfOperatoinId { get; set; }
+        public TypeOfOperatoin TypeOfOperatoin { get; set; }
     }
 }

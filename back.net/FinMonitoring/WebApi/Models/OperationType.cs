@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
-    public class OperatoinType
+    public class TypeOfOperatoin
     {
         public int Id { get; set; }
         public string Name { get; set; }
