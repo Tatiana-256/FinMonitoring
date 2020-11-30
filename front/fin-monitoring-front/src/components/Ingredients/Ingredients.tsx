@@ -34,11 +34,11 @@ export const Ingredients = () => {
         dispatch(addNewIngredient({ ingredientName: newIngredientName}))
     };
 
-    const editExistIngredient = (id: string, ingredient: IIngredient) => {
+    const editExistIngredient = (id: number, ingredient: IIngredient) => {
         dispatch(editIngredient(id, ingredient))
     };
 
-    const deleteIngr = (id: string) => {
+    const deleteIngr = (id: number) => {
         dispatch(deleteIngredient(id))
     }
 

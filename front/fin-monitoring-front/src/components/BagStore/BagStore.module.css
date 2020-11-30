@@ -1,6 +1,7 @@
 .store_container {
     width: 40%;
     border-left: 2px solid black;
+    padding: 2%;
 }
 
 .store_header {
@@ -56,15 +57,54 @@
     font-size: 1.8rem;
 }
 
-.store_bag_burger {
-    height: 80px;
-    width: auto;
+
+.store_bag_burger_container {
+    font-size: 1.5rem;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.bottom_button{
+.store_bag_burger {
+    width: 40%;
+}
+
+.bottom_button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 10px 0;
+}
+
+@media screen and (max-width: 800px) {
+    .head_text {
+        font-size: 1.1rem;
+    }
+
+    .store_bag_burger {
+        width: 70%;
+
+    }
+
+    .store_header {
+        width: 50%;
+    }
+
+    .store_container {
+        position: absolute;
+        transition: 1.3s;
+        left: 50%;
+        width: 55%;
+        background: white;
+        /*border-left: 2px solid black;*/
+        /* padding: 2%; */
+        min-height: 90vh;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+
 }

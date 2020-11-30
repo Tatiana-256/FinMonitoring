@@ -10,7 +10,7 @@ export const ingredientsAPI = {
                 }
             )
     },
-    deleteIngredient(id: string) {
+    deleteIngredient(id: number) {
         return instance.delete(`api/Ingredients/${id}`
         ).then(res => {
             console.log(res)
@@ -25,7 +25,7 @@ export const ingredientsAPI = {
             return res.data
         })
     },
-    editIngredient(id: string, ingredient: IIngredientAPI) {
+    editIngredient(id: number, ingredient: IIngredientAPI) {
         return instance.put(`api/Ingredients/${id}`, ingredient).then(res => {
             console.log(res.data)
             return res.data
@@ -40,6 +40,6 @@ export interface IIngredientAPI {
 }
 
 export interface IIngredient {
-    id: string | number,
+    id: number | number,
     ingredientName: string
 }

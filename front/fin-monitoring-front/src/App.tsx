@@ -60,7 +60,7 @@ interface IBagIcon {
 const BagIcon: React.FC<IBagIcon> = ({setBurger}) => {
     const {total} = useSelector((store: AppStateType) => store.bagItems);
 
-    return <div style={{fontSize: "1.5rem"}}>
+    return <div className={styles.store_bag_burger_container}>
         <img src={storebag} className={styles.store_bag_burger}
              onClick={setBurger}
         />

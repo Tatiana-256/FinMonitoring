@@ -17,9 +17,13 @@ export const Category: React.FC<ICategory> = ({category}) => {
         history.push(`Products/${category.name.split(' ').join('')}`)
     }
 
-    return <div className={styles.category_container} onClick={goToCategory}>
-        <div className={styles.category} style={{backgroundImage: `url(${category.img})`}}>
-            {category.name}
+
+    return <div className={styles.category_container_1}>
+        <div className={styles.category_container} onClick={goToCategory}>
+            <div className={styles.category} style={{backgroundImage: `url(${category.img})`}}/>
+            <div className={styles.category_name}>
+                {category.name}
+            </div>
         </div>
     </div>
 }

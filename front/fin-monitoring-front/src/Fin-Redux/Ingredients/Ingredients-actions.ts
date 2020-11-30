@@ -11,8 +11,8 @@ export const ingredientsActions = {
         type: "ingredientsReducer/GET_INGREDIENTS",
         ingredients
     } as const),
-    deleteIngredient: (id: string) => ({type: "ingredientsReducer/delete_INGREDIENTS", id} as const),
-    editIngredient: (id: string, newIngredient: IIngredient) => ({
+    deleteIngredient: (id: number) => ({type: "ingredientsReducer/delete_INGREDIENTS", id} as const),
+    editIngredient: (id: number, newIngredient: IIngredient) => ({
         type: "ingredientsReducer/EDIT_INGREDIENTS",
         id,
         newIngredient
@@ -36,13 +36,13 @@ export const getIngredients = (): thunkType => async (dispatch) => {
 };
 
 
-export const deleteIngredient = (id: string): thunkType => async (dispatch) => {
+export const deleteIngredient = (id: number): thunkType => async (dispatch) => {
     let result = await ingredientsAPI.deleteIngredient(id)
     if (result) {
         dispatch(ingredientsActions.deleteIngredient(id))
     }
 };
-export const editIngredient = (id: string, ingredient: IIngredient): thunkType => async (dispatch) => {
+export const editIngredient = (id: number, ingredient: IIngredient): thunkType => async (dispatch) => {
     debugger
     let result = await ingredientsAPI.editIngredient(id, ingredient)
     if (result === "") {

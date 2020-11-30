@@ -41,7 +41,7 @@ export const Category = () => {
     return <>
         <AddItem name={"Category"} onChangeInputName={onChangeInputName} addNewItem={addCategorySubmit}/>
         <div className={styles.category_container}>
-            <Table name={"Category name"} id={0} tableHeader={true} editItemCategory={editExistCategory}
+            <Table name={"Category name"} id={"ID"} tableHeader={true} editItemCategory={editExistCategory}
                    tableType={'Category'}
 
                    deleteItem={deleteCategory}/>

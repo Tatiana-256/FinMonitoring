@@ -8,11 +8,11 @@ import {IIngredient, IIngredientAPI} from "../../Fin-Requests/Ingredients-API";
 
 interface IProps {
     editItemCategory?: (id: number, category: ICategory) => void,
-    editItemIngredient?: (id: number | string, ingredient: IIngredient) => void,
+    editItemIngredient?: (id: number, ingredient: IIngredient) => void,
     tableType: 'Ingredient' | 'Category'
     deleteItem: (id: number) => void,
     name: string,
-    id: number,
+    id: number | "ID",
     tableHeader: boolean
 }
 
@@ -38,7 +38,7 @@ export const Table: React.FC<IProps> = React.memo(({name, id, tableHeader, editI
     }
 
     const deleteIt = () => {
-        deleteItem(id)
+        if (typeof id === "number") deleteItem(id)
     }
 
 
@@ -58,7 +58,7 @@ export const Table: React.FC<IProps> = React.memo(({name, id, tableHeader, editI
             /> :
             <div className={styles.options}>{name}</div>}
         {/*<div className={styles.options}>id</div>*/}
-        <div className={styles.options}>{typeof (id) ==="number" ? id : "ID"}</div>
+        <div className={styles.options}>{typeof (id) === "number" ? id : "ID"}</div>
         <div style={{display: "flex", alignItems: "center"}}>
             {tableHeader ? <div style={{width: "12rem"}}/> :
                 edit ?
