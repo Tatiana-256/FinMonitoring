@@ -9,5 +9,8 @@ namespace WebApi.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public ICollection<IngredientHistory> IngredientHistories { get; set; }
+
     }
 }

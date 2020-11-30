@@ -10,5 +10,7 @@ namespace WebApi.Models
         public int Id { get; set; }
 
         public int Name { get; set; }
+        public IList<Ingredient> Ingredients { get; set; }
+
     }
 }
