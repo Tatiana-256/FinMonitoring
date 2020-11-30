@@ -11,6 +11,6 @@ namespace WebApi.Models
 
         public string Name { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public IList<Product> Products { get; set; }
     }
 }

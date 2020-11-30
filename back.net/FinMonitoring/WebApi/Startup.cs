@@ -39,8 +39,8 @@ namespace WebApi
                 sp.GetRequiredService<IOptions<FinMonitoringDatabaseSettings>>().Value);
 
             services.AddSingleton<FundService>();//mongo
-            services.AddSingleton<CategoryServiceMongo>();//mongo
-            services.AddSingleton<IngredientsService>();//mongo
+           // services.AddSingleton<CategoryServiceMongo>();//mongo
+            //services.AddSingleton<IngredientsService>();//mongo
 
             services.AddCors(c =>
             {
@@ -52,6 +52,7 @@ namespace WebApi
                 options.UseSqlServer(connection));
 
             services.AddTransient<CategoryService>();
+            services.AddTransient<IngredientService>();
 
             services.AddSwaggerConfiguration();
 
