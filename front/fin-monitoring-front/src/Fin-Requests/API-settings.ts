@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const dev = 'https://localhost:5001'
+const dev = 'https://localhost:5007'
 
 export const instance = axios.create({
     baseURL: dev,

@@ -7,12 +7,12 @@ import {ICategory} from "../../Fin-Redux/Category/category-reduser";
 import {IIngredient, IIngredientAPI} from "../../Fin-Requests/Ingredients-API";
 
 interface IProps {
-    editItemCategory?: (id: string, category: ICategory) => void,
-    editItemIngredient?: (id: string, ingredient: IIngredient) => void,
+    editItemCategory?: (id: number, category: ICategory) => void,
+    editItemIngredient?: (id: number | string, ingredient: IIngredient) => void,
     tableType: 'Ingredient' | 'Category'
-    deleteItem: (id: string) => void,
+    deleteItem: (id: number) => void,
     name: string,
-    id: string,
+    id: number,
     tableHeader: boolean
 }
 
@@ -31,8 +31,8 @@ export const Table: React.FC<IProps> = React.memo(({name, id, tableHeader, editI
     }
 
     const saveChanges = () => {
-        tableType === 'Category' ? editItemCategory!(id, {id: id, categoryName: changeInput}) :
-            editItemIngredient!(id, {ingredientName: changeInput, id: id})
+        // tableType === 'Category' ? editItemCategory!(id, {id: id, name: changeInput}) :
+        //     editItemIngredient!(id, {ingredientName: changeInput, id: id})
         setEdit(prevState => !prevState)
 
     }
@@ -57,7 +57,8 @@ export const Table: React.FC<IProps> = React.memo(({name, id, tableHeader, editI
                        onKeyPress={onKeyPress}
             /> :
             <div className={styles.options}>{name}</div>}
-        <div className={styles.options}>{id === "ID" ? id : id.slice(19)}</div>
+        {/*<div className={styles.options}>id</div>*/}
+        <div className={styles.options}>{typeof (id) ==="number" ? id : "ID"}</div>
         <div style={{display: "flex", alignItems: "center"}}>
             {tableHeader ? <div style={{width: "12rem"}}/> :
                 edit ?

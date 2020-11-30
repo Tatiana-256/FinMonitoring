@@ -31,7 +31,7 @@ export const Ingredients = () => {
     };
 
     const addIngredientSubmit = () => {
-        dispatch(addNewIngredient({ingredientName: newIngredientName}))
+        dispatch(addNewIngredient({ ingredientName: newIngredientName}))
     };
 
     const editExistIngredient = (id: string, ingredient: IIngredient) => {

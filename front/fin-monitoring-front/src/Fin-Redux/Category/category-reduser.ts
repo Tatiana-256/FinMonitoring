@@ -6,8 +6,8 @@ const initialState = {
 };
 
 export interface ICategory {
-    id: string
-    categoryName: string,
+    id: number
+    name: string,
 
 }
 

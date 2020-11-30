@@ -26,26 +26,26 @@ export const Category = () => {
     }
 
     const addCategorySubmit = () => {
-        dispatch(addCategory({categoryName: newCategoryName}))
+        dispatch(addCategory({name: newCategoryName}))
     }
 
-    const editExistCategory = useCallback((id: string, category: ICategory) => {
-        dispatch(editCategory(id, category))
+    const editExistCategory = useCallback((id: number, category: ICategory) => {
+        // dispatch(editCategory(id, category))
     }, [])
 
-    const deleteCategory = useCallback((id: string) => {
-        dispatch(deleteCategory(id))
-    },[])
+    const deleteCategory = useCallback((id: number) => {
+        // dispatch(deleteCategory(id))
+    }, [])
 
 
     return <>
         <AddItem name={"Category"} onChangeInputName={onChangeInputName} addNewItem={addCategorySubmit}/>
         <div className={styles.category_container}>
-            <Table name={"Category name"} id={"ID"} tableHeader={true} editItemCategory={editExistCategory}
+            <Table name={"Category name"} id={0} tableHeader={true} editItemCategory={editExistCategory}
                    tableType={'Category'}
 
                    deleteItem={deleteCategory}/>
-            {category.category.map(x => <Table name={x.categoryName}
+            {category.category.map(x => <Table name={x.name}
                                                id={x.id} key={x.id}
                                                tableHeader={false}
                                                editItemCategory={editExistCategory}

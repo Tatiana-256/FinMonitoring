@@ -40,6 +40,6 @@ export interface IIngredientAPI {
 }
 
 export interface IIngredient {
-    id: string,
+    id: string | number,
     ingredientName: string
 }
