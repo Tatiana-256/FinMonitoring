@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace WebApi.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-          //  Database.EnsureDeleted();
+            Database.EnsureDeleted();
             Database.EnsureCreated(); // создаем базу данных при первом обращении
         }
 
@@ -22,7 +22,13 @@ namespace WebApi.Models
             modelBuilder.Entity<Product>()
                 .HasOne<Category>(s => s.Category)
                 .WithMany(g => g.Products)
-                .HasForeignKey(s => s.Id);
+                .HasForeignKey(s => s.CategoryId);
+
+            /*modelBuilder.Entity<Ingredient>(b =>
+            {
+                b.HasKey(e => e.Id);
+                b.Property(e => e.Id).ValueGeneratedOnAdd();
+            });*/
 
             // IngredientHistory
 
@@ -30,25 +36,29 @@ namespace WebApi.Models
             modelBuilder.Entity<IngredientHistory>()
                 .HasOne<Ingredient>(s => s.Ingredient)
                 .WithMany(g => g.IngredientHistory)
-                .HasForeignKey(s => s.Id);
+                .HasForeignKey(s => s.IngregientId);
 
             modelBuilder.Entity<IngredientHistory>()
                 .HasOne<TypeOfOperatoin>(s => s.TypeOfOperatoin)
                 .WithMany(g => g.IngredientHistories)
-                .HasForeignKey(s => s.Id);
+                .HasForeignKey(s => s.TypeOfOperatoinId);
 
             modelBuilder.Entity<IngredientHistory>()
                 .HasOne<Supplying>(s => s.Supplying)
                 .WithMany(g => g.IngredientHistory)
-                .HasForeignKey(s => s.Id);
+                .HasForeignKey(s => s.SupplyingId);
 
 
             // Ingredient
 
             modelBuilder.Entity<Ingredient>()
-             .HasOne<Measurement>(s => s.Measurement)
-             .WithMany(g => g.Ingredients)
-             .HasForeignKey(s => s.Id);
+                .HasOne<Measurement>(s => s.Measurement)
+                .WithMany(g => g.Ingredients)
+                .HasForeignKey(s => s.MeasurementId);
+
+            /*modelBuilder.Entity<Ingredient>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();*/
 
 
             //ManyToMany
