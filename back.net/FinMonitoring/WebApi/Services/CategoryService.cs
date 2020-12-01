@@ -18,17 +18,6 @@ namespace WebApi.Services
         public ResponseWrapper<IEnumerable<CategoryDto>> GetAllCategories() {
             try
             {
-                var ing = new Ingredient
-                {
-                    Amount = 0,
-                    MeasurementId = 1,
-                    Name = "fff",
-                    Price = 10
-                };
-
-                db.Ingredients.Add(ing);
-                db.SaveChanges();
-
                 var categoriesDto = db.Categories.ToList().Select(x => new CategoryDto { Id = x.Id, Name = x.Name });
                 return new ResponseWrapper<IEnumerable<CategoryDto>>()
                 {
