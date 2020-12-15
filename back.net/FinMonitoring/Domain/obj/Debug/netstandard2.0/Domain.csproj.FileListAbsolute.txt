@@ -1,0 +1,8 @@
+C:\Self education\Projects\FinMonitoring\back.net\FinMonitoring\Domain\bin\Debug\netstandard2.0\Domain.deps.json
+C:\Self education\Projects\FinMonitoring\back.net\FinMonitoring\Domain\bin\Debug\netstandard2.0\Domain.dll
+C:\Self education\Projects\FinMonitoring\back.net\FinMonitoring\Domain\bin\Debug\netstandard2.0\Domain.pdb
+C:\Self education\Projects\FinMonitoring\back.net\FinMonitoring\Domain\obj\Debug\netstandard2.0\Domain.csprojAssemblyReference.cache
+C:\Self education\Projects\FinMonitoring\back.net\FinMonitoring\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfoInputs.cache
+C:\Self education\Projects\FinMonitoring\back.net\FinMonitoring\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfo.cs
+C:\Self education\Projects\FinMonitoring\back.net\FinMonitoring\Domain\obj\Debug\netstandard2.0\Domain.dll
+C:\Self education\Projects\FinMonitoring\back.net\FinMonitoring\Domain\obj\Debug\netstandard2.0\Domain.pdb

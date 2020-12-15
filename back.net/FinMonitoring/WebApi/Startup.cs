@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Persistence;
 using WebApi.Actions;
 using WebApi.Models;
 using WebApi.Services;
@@ -44,7 +45,11 @@ namespace WebApi
 
             services.AddCors(c =>
             {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                c.AddPolicy("CorsPolicy",
+                    options =>
+                    {
+                        options.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+                    });
             });
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
@@ -70,12 +75,12 @@ namespace WebApi
             app.UseSwaggerConfiguration();
 
             app.UseHttpsRedirection();
-
+            
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.UseCors(options => options.AllowAnyOrigin());
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

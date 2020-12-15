@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain;
+using Persistence;
 using WebApi.Dto;
 using WebApi.Models;
 
@@ -37,9 +39,5 @@ namespace WebApi.Services
                 };
             }
         }
-
-
-
-
     }
 }
