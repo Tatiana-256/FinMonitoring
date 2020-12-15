@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Dto;
 using WebApi.Models;
 using WebApi.Services;
 
@@ -17,63 +18,88 @@ namespace WebApi.Controllers
     public class IngredientsController : ControllerBase
     {
 
-        private readonly IngredientsService _ingredientsService;
-        private ApplicationContext db;
+        private readonly IngredientService _ingredientService;
+        //private ApplicationContext db;
 
-        public IngredientsController(IngredientsService ingredientsService, ApplicationContext context)
+        public IngredientsController(IngredientService ingredientService)
         {
-            _ingredientsService = ingredientsService;
-            db = context;
+            _ingredientService = ingredientService;
         }
 
         // GET: api/Ingredients
         [HttpGet]
-        public async Task<ActionResult<List<IngredientMongo>>> Get()
+
+        public ResponseWrapper<IEnumerable<IngredientDto>> Get()
         {
-
-            db.Add(new User() { Name = "Alex", Age = 25, Number = 50 });
-            await db.SaveChangesAsync();
-
-            return _ingredientsService.Get();
-        }
-
-        // GET: api/Ingredients/5
-        [HttpGet("{id:length(24)}", Name = "GetIngredient")]
-        public ActionResult<IngredientMongo> Get(string id)
-        {
-            var ingredient = _ingredientsService.Get(id);
-
-            if (ingredient == null)
-            {
-                return NotFound();
-            }
-
-            return ingredient;
+            return _ingredientService.GetAllIngredients();
         }
 
         // POST: api/Ingredients
+
         [HttpPost]
-        public ActionResult<IngredientMongo> Create(IngredientMongo ingredient)
+        public async Task<ResponseWrapper<IngredientDto>> Create([FromBody] CreateIngredientModel newIngredient)
         {
+            if (newIngredient == null)
+            {
+                return new ResponseWrapper<IngredientDto>
+                {
+                    IsError = true,
+                    Message = "Name cannot be null or empty"
+                };
+            }
 
-            _ingredientsService.Create(ingredient);
-
-            return CreatedAtRoute("GetIngredient", new { id = ingredient.Id.ToString() }, ingredient);
+            return await _ingredientService.Create(newIngredient);
         }
 
-        // PUT: api/Ingredients/5
-        [HttpPut("{id}")]
-        public void Put(string id, [FromBody] IngredientMongo value)
-        {
-            _ingredientsService.Update(id, value);
-        }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(string id)
-        {
-            _ingredientsService.Remove(id);
-        }
+
+
+        /* public async Task<ActionResult<List<IngredientMongo>>> Get()
+         {
+
+             db.Add(new User() { Name = "Alex", Age = 25, Number = 50 });
+             await db.SaveChangesAsync();
+
+             return _ingredientsService.Get();
+         }
+
+         // GET: api/Ingredients/5
+         [HttpGet("{id:length(24)}", Name = "GetIngredient")]
+         public ActionResult<IngredientMongo> Get(string id)
+         {
+             var ingredient = _ingredientsService.Get(id);
+
+             if (ingredient == null)
+             {
+                 return NotFound();
+             }
+
+             return ingredient;
+         }
+
+         // POST: api/Ingredients
+         [HttpPost]
+         public ActionResult<IngredientMongo> Create(IngredientMongo ingredient)
+         {
+
+             _ingredientsService.Create(ingredient);
+
+             return CreatedAtRoute("GetIngredient", new { id = ingredient.Id.ToString() }, ingredient);
+         }
+
+         // PUT: api/Ingredients/5
+         [HttpPut("{id}")]
+         public void Put(string id, [FromBody] IngredientMongo value)
+         {
+             _ingredientsService.Update(id, value);
+         }
+
+         // DELETE: api/ApiWithActions/5
+         [HttpDelete("{id}")]
+         public void Delete(string id)
+         {
+             _ingredientsService.Remove(id);
+         }*/
 
 
     }

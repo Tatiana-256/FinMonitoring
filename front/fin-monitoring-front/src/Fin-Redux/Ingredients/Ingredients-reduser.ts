@@ -31,15 +31,6 @@ export const ingredientsReducer = (state = initialState, action: ingredientsActi
                     }
                 })
 
-                // ...state,
-                // category: state.category.map(category => {
-                //     if (category.id !== action.id) {
-                //         return category
-                //     } else {
-                //         return {...category, ...action.category}
-                //     }
-                // })
-
             }
         case "ingredientsReducer/ADD_INGREDIENT":
             return {

@@ -27,7 +27,7 @@ function App() {
 
 function AppGlobal() {
 
-    const [bagStore, setBagStore] = useState(false)
+    const [bagStore, setBagStore] = useState(true)
 
     const setBurger = () => setBagStore(prevState => !prevState)
 
@@ -40,8 +40,7 @@ function AppGlobal() {
                     <div className="App">
                         <App/>
                     </div>
-                    {bagStore ? <BagStore setBurger={setBurger}/> :
-                        <BagIcon setBurger={setBurger}/>}
+                    <BagStore setBurger={setBurger} bagStore={bagStore}/>
                 </div>
 
             </Provider>
@@ -52,20 +51,3 @@ function AppGlobal() {
 
 export default AppGlobal;
 
-
-interface IBagIcon {
-    setBurger: () => void
-}
-
-const BagIcon: React.FC<IBagIcon> = ({setBurger}) => {
-    const {total} = useSelector((store: AppStateType) => store.bagItems);
-
-    return <div className={styles.store_bag_burger_container}>
-        <img src={storebag} className={styles.store_bag_burger}
-             onClick={setBurger}
-        />
-        <div style={{fontWeight: "bold"}}>Sum:</div>
-        <div>{total} UAH</div>
-    </div>
-
-}

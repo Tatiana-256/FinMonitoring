@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: rgb(234 233 233);;
+    background-color: #522546;;
     min-height: 100vh;
     box-shadow: 4px 3px 17px black;
 }
@@ -57,7 +57,7 @@
     color: black;
     width: 95%;
     height: 20%;
-    /*background-color: #7984EE;*/
+    /*background-color: #522546 ;*/
     /*box-shadow: 4px 5px 7px black;*/
     border-radius: 20px;
     /*font-weight: bold;*/

@@ -11,9 +11,14 @@ import {
     editIngredient
 } from '../../Fin-Redux/Ingredients/Ingredients-actions';
 import {IIngredient, IIngredientAPI} from "../../Fin-Requests/Ingredients-API";
-
+import styled from "styled-components"
 
 export const Ingredients = () => {
+
+
+    const f = styled.div`
+    disp
+    `
 
     const dispatch = useDispatch();
 
@@ -31,7 +36,7 @@ export const Ingredients = () => {
     };
 
     const addIngredientSubmit = () => {
-        dispatch(addNewIngredient({ ingredientName: newIngredientName}))
+        dispatch(addNewIngredient({name: newIngredientName, measurementId: 1}))
     };
 
     const editExistIngredient = (id: number, ingredient: IIngredient) => {
@@ -39,7 +44,8 @@ export const Ingredients = () => {
     };
 
     const deleteIngr = (id: number) => {
-        dispatch(deleteIngredient(id))
+
+       dispatch(deleteIngredient(id))
     }
 
 
@@ -49,7 +55,7 @@ export const Ingredients = () => {
             <Table name={"Ingredient name"} id={"ID"} tableHeader={true} editItemIngredient={editExistIngredient}
                    tableType={'Ingredient'}
                    deleteItem={deleteIngredient}/>
-            {ingredients.ingredients.map(x => <Table name={x.ingredientName}
+            {ingredients.ingredients.map(x => <Table name={x.name}
                                                      id={x.id}
                                                      tableHeader={false}
                                                      editItemIngredient={editExistIngredient}

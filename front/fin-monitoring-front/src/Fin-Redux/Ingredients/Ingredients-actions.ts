@@ -30,8 +30,9 @@ type thunkType = baseThunkType<ingredientsActionsType>
 
 export const getIngredients = (): thunkType => async (dispatch) => {
     let result = await ingredientsAPI.getIngredients()
+    debugger
     if (result) {
-        dispatch(ingredientsActions.getIngredients(result))
+        dispatch(ingredientsActions.getIngredients(result.data))
     }
 };
 
@@ -44,16 +45,22 @@ export const deleteIngredient = (id: number): thunkType => async (dispatch) => {
 };
 export const editIngredient = (id: number, ingredient: IIngredient): thunkType => async (dispatch) => {
     debugger
-    let result = await ingredientsAPI.editIngredient(id, ingredient)
-    if (result === "") {
-        dispatch(ingredientsActions.editIngredient(id, ingredient))
-    }
+    // let result = await ingredientsAPI.editIngredient(id, ingredient)
+    // if (result === "") {
+    //     dispatch(ingredientsActions.editIngredient(id, ingredient))
+    // }
 };
 
 export const addNewIngredient = (ingredient: IIngredientAPI): thunkType => async (dispatch) => {
-    let result = await ingredientsAPI.addIngredient(ingredient)
-    if (result) {
-        dispatch(ingredientsActions.addIngredient(result))
+    debugger
+    let result = await (() => {
+        debugger
+        return ingredientsAPI.addIngredient(ingredient)
+    })()
+    if (result.message === "Success" || null) {
+        dispatch(ingredientsActions.addIngredient(result.data))
+    } else {
+        console.log(result)
     }
 }
 

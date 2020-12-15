@@ -1,6 +1,7 @@
 .App {
     width: 80%;
     min-height: 100vh
+
 }
 
 
@@ -9,5 +10,7 @@
     width: 100%;
     align-items: flex-start;
     justify-content: space-evenly;
-    min-height: 100vh
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
 }

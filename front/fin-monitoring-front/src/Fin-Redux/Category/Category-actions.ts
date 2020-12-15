@@ -25,20 +25,22 @@ export const getCategory = (): thunkType => async (dispatch) => {
     }
 };
 
+
+export const addCategory = (category: ICategoryAPI): thunkType => async (dispatch) => {
+    debugger
+    let result = await categoryAPI.addCategory(category)
+    if (result.message === "Success") {
+        dispatch(categoryActions.addCategory(result.data))
+    }
+};
+
+
 export const deleteCategory = (id: number): thunkType => async (dispatch) => {
     let result = await categoryAPI.deleteCategory(id)
     if (result) {
         dispatch(categoryActions.deleteCategory(id))
     }
 }
-
-
-export const addCategory = (category: ICategoryAPI): thunkType => async (dispatch) => {
-    let result = await categoryAPI.addCategory(category)
-    if (result) {
-        dispatch(categoryActions.addCategory(result))
-    }
-};
 
 
 export const editCategory = (id: number, category: ICategory): thunkType => async (dispatch) => {

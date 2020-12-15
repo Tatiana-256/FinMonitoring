@@ -15,7 +15,7 @@ namespace WebApi.Dto
         public double Amount { get; set; }
 
         public int MeasurementId { get; set; }
-        //public Measurement Measurement { get; set; }
+        //  public Measurement Measurement { get; set; }
 
         //public IList<IngredientHistory> IngredientHistory { get; set; }
     }

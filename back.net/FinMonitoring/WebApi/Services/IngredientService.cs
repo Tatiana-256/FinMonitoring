@@ -43,7 +43,7 @@ namespace WebApi.Services
             var ingredient = new Ingredient
             {
                 Name = newIngredient.name,
-                MeasurementId = newIngredient.MeasurementId
+                Measurement = db.Measurements.Find(newIngredient.MeasurementId)
             };
             db.Ingredients.Add(ingredient);
             await db.SaveChangesAsync();

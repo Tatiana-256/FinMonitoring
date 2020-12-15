@@ -1,10 +1,10 @@
 import {ICategory} from "../Fin-Redux/Category/category-reduser";
-import {instance} from "./API-settings";
+import {IAPIRequest, instance} from "./API-settings";
 
 
 export const categoryAPI = {
     getCategory() {
-        return instance.get<ICategoryAPIGet>(`api/Category`)
+        return instance.get<GetResponse>(`api/Category`)
             .then(res => {
                     debugger
                     console.log(res.data)
@@ -13,8 +13,9 @@ export const categoryAPI = {
             )
     },
     addCategory(category: ICategoryAPI) {
-        return instance.post("api/Category", category
+        return instance.post<PostResponse>("api/Category", category
         ).then(res => {
+            debugger
             console.log(res.data)
             return res.data
         })
@@ -40,8 +41,6 @@ export interface ICategoryAPI {
     name: string
 }
 
-export interface ICategoryAPIGet {
-    data: Array<ICategory>,
-    isError: boolean
-    message: "Success" | string,
-}
+type GetResponse = IAPIRequest<Array<ICategory>>
+type PostResponse = IAPIRequest<ICategory>
+
