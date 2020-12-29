@@ -27,4 +27,10 @@ yarn-error.log*
 #.net backend/
 back.net/FinMonitoring/WebApi/bin/
 back.net/FinMonitoring/WebApi/obj/
+back.net/FinMonitoring/Application/bin/
+back.net/FinMonitoring/Application/obj/
+back.net/FinMonitoring/Domain/bin/
+back.net/FinMonitoring/Domain/obj/
+back.net/FinMonitoring/Persistence/bin/
+back.net/FinMonitoring/Persistence/obj/
 back.net/FinMonitoring/.vs/
