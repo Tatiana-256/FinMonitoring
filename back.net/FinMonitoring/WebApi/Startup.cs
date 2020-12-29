@@ -32,17 +32,6 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // requires using Microsoft.Extensions.Options
-            services.Configure<FinMonitoringDatabaseSettings>(
-                Configuration.GetSection(nameof(FinMonitoringDatabaseSettings)));
-
-            services.AddSingleton<IFinMonitoringDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<FinMonitoringDatabaseSettings>>().Value);
-
-            services.AddSingleton<FundService>();//mongo
-           // services.AddSingleton<CategoryServiceMongo>();//mongo
-            //services.AddSingleton<IngredientsService>();//mongo
-
             services.AddCors(c =>
             {
                 c.AddPolicy("CorsPolicy",
