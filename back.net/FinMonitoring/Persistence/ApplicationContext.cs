@@ -13,73 +13,73 @@ namespace Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            ///Product 
-            modelBuilder.Entity<Product>()
-                .HasOne<Category>(s => s.Category)
-                .WithMany(g => g.Products)
-                .HasForeignKey(s => s.CategoryId);
+            /////Product 
+            //modelBuilder.Entity<Product>()
+            //    .HasOne<Category>(s => s.Category)
+            //    .WithMany(g => g.Products)
+            //    .HasForeignKey(s => s.CategoryId);
 
-            /*modelBuilder.Entity<Ingredient>(b =>
-            {
-                b.HasKey(e => e.Id);
-                b.Property(e => e.Id).ValueGeneratedOnAdd();
-            });*/
+            ///*modelBuilder.Entity<Ingredient>(b =>
+            //{
+            //    b.HasKey(e => e.Id);
+            //    b.Property(e => e.Id).ValueGeneratedOnAdd();
+            //});*/
 
-            // IngredientHistory
+            //// IngredientHistory
 
-            //OneToMany (One ingredient has many IngredientHistory)
-            modelBuilder.Entity<IngredientHistory>()
-                .HasOne<Ingredient>(s => s.Ingredient)
-                .WithMany(g => g.IngredientHistory)
-                .HasForeignKey(s => s.IngregientId);
+            ////OneToMany (One ingredient has many IngredientHistory)
+            //modelBuilder.Entity<IngredientHistory>()
+            //    .HasOne<Ingredient>(s => s.Ingredient)
+            //    .WithMany(g => g.IngredientHistory)
+            //    .HasForeignKey(s => s.IngregientId);
 
-            modelBuilder.Entity<IngredientHistory>()
-                .HasOne<TypeOfOperatoin>(s => s.TypeOfOperatoin)
-                .WithMany(g => g.IngredientHistories)
-                .HasForeignKey(s => s.TypeOfOperatoinId);
+            //modelBuilder.Entity<IngredientHistory>()
+            //    .HasOne<TypeOfOperatoin>(s => s.TypeOfOperatoin)
+            //    .WithMany(g => g.IngredientHistories)
+            //    .HasForeignKey(s => s.TypeOfOperatoinId);
 
-            modelBuilder.Entity<IngredientHistory>()
-                .HasOne<Supplying>(s => s.Supplying)
-                .WithMany(g => g.IngredientHistory)
-                .HasForeignKey(s => s.SupplyingId);
-
-
-            // Ingredient
-
-            modelBuilder.Entity<Ingredient>()
-                .HasOne<Measurement>(s => s.Measurement)
-                .WithMany(g => g.Ingredients)
-                .HasForeignKey(s => s.MeasurementId);
-
-            /*modelBuilder.Entity<Ingredient>()
-                .Property(p => p.Id)
-                .ValueGeneratedOnAdd();*/
+            //modelBuilder.Entity<IngredientHistory>()
+            //    .HasOne<Supplying>(s => s.Supplying)
+            //    .WithMany(g => g.IngredientHistory)
+            //    .HasForeignKey(s => s.SupplyingId);
 
 
-            //ManyToMany
+            //// Ingredient
 
-            // Ingredient with Product
-            modelBuilder.Entity<IngredientProduct>().HasKey(sc => new { sc.IngredientId, sc.ProductId });
-            modelBuilder.Entity<IngredientProduct>()
-                .HasOne<Ingredient>(sc => sc.Ingredient)
-                .WithMany(s => s.IngredientProduct)
-                .HasForeignKey(sc => sc.IngredientId);
-            modelBuilder.Entity<IngredientProduct>()
-                .HasOne<Product>(sc => sc.Product)
-                .WithMany(s => s.IngredientProduct)
-                .HasForeignKey(sc => sc.ProductId);
+            //modelBuilder.Entity<Ingredient>()
+            //    .HasOne<Measurement>(s => s.Measurement)
+            //    .WithMany(g => g.Ingredients)
+            //    .HasForeignKey(s => s.MeasurementId);
+
+            ///*modelBuilder.Entity<Ingredient>()
+            //    .Property(p => p.Id)
+            //    .ValueGeneratedOnAdd();*/
 
 
-            //Product and purchase
-            modelBuilder.Entity<ProductPurchase>().HasKey(sc => new { sc.PurchaseId, sc.ProductId });
-            modelBuilder.Entity<ProductPurchase>()
-                .HasOne<Purchase>(sc => sc.Purchase)
-                .WithMany(s => s.ProductPurchase)
-                .HasForeignKey(sc => sc.PurchaseId);
-            modelBuilder.Entity<ProductPurchase>()
-                .HasOne<Product>(sc => sc.Product)
-                .WithMany(s => s.ProductPurchases)
-                .HasForeignKey(sc => sc.ProductId);
+            ////ManyToMany
+
+            //// Ingredient with Product
+            //modelBuilder.Entity<IngredientProduct>().HasKey(sc => new { sc.IngredientId, sc.ProductId });
+            //modelBuilder.Entity<IngredientProduct>()
+            //    .HasOne<Ingredient>(sc => sc.Ingredient)
+            //    .WithMany(s => s.IngredientProduct)
+            //    .HasForeignKey(sc => sc.IngredientId);
+            //modelBuilder.Entity<IngredientProduct>()
+            //    .HasOne<Product>(sc => sc.Product)
+            //    .WithMany(s => s.IngredientProduct)
+            //    .HasForeignKey(sc => sc.ProductId);
+
+
+            ////Product and purchase
+            //modelBuilder.Entity<ProductPurchase>().HasKey(sc => new { sc.PurchaseId, sc.ProductId });
+            //modelBuilder.Entity<ProductPurchase>()
+            //    .HasOne<Purchase>(sc => sc.Purchase)
+            //    .WithMany(s => s.ProductPurchase)
+            //    .HasForeignKey(sc => sc.PurchaseId);
+            //modelBuilder.Entity<ProductPurchase>()
+            //    .HasOne<Product>(sc => sc.Product)
+            //    .WithMany(s => s.ProductPurchases)
+            //    .HasForeignKey(sc => sc.ProductId);
 
 
         }

@@ -52,9 +52,14 @@ namespace WebApi
                     });
             });
 
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlServer(connection));
+            //MS SQL connection
+            //string connection = Configuration.GetConnectionString("DefaultConnection");
+            //services.AddDbContext<ApplicationContext>(options =>
+            //    options.UseSqlServer(connection));
+
+            services.AddDbContext<ApplicationContext>(opt => {
+                opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             services.AddTransient<CategoryService>();
             services.AddTransient<IngredientService>();

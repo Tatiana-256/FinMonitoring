@@ -2,6 +2,7 @@
 {
     public class IngredientProduct
     {
+        public int Id { get; set; }
         public double AmountIngredients { get; set; }
 
         public int IngredientId { get; set; }

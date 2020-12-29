@@ -34,3 +34,5 @@ back.net/FinMonitoring/Domain/obj/
 back.net/FinMonitoring/Persistence/bin/
 back.net/FinMonitoring/Persistence/obj/
 back.net/FinMonitoring/.vs/
+
+back.net/FinMonitoring/WebApi/reactivities.db
